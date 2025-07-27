@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     signingConfigs {
@@ -14,7 +14,6 @@ android {
 
     defaultConfig {
         signingConfig signingConfigs.release
-        applicationId = 'com.sky.SkyEmu'
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 32
