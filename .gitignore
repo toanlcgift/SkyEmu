@@ -51,3 +51,5 @@ cmake-build-*/
 .gradle
 .google
 tools/android_project/app/release
+/.vs
+/out/install/x64-Debug
