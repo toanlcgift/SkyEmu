@@ -6325,6 +6325,7 @@ void se_draw_menu_panel(){
   igSameLine(0,2);
   if(se_button(ICON_FK_REPEAT,(ImVec2){20,20}))se_reset_default_gb_palette();
   if(gui_state.ui_type==SE_UI_ANDROID||gui_state.ui_type==SE_UI_IOS){
+    if(!show_ui)
     se_draw_touch_controls_settings();
   }else{
     se_section(ICON_FK_KEYBOARD_O " Keybinds");
