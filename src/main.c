@@ -86,7 +86,7 @@
 
 #define SE_FIELD_INDENT 125
 
-bool show_ui = false;
+bool show_ui = true;
 
 const static char* se_keybind_names[SE_NUM_KEYBINDS]={
   "A",
