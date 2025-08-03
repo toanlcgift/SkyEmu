@@ -86,6 +86,8 @@
 
 #define SE_FIELD_INDENT 125
 
+bool show_ui = false;
+
 const static char* se_keybind_names[SE_NUM_KEYBINDS]={
   "A",
   "B",
@@ -3123,6 +3125,8 @@ void se_reset_save_states(){
 }
 
 static void se_draw_debug_menu(){
+    if (!show_ui)
+        return;
   se_debug_tool_desc_t* desc=se_get_debug_description();
   if(!desc)return;
   ImGuiStyle* style = igGetStyle();
@@ -5065,6 +5069,8 @@ bool se_string_contains_string_case_insensitive(char *canidate, char *search) {
   return false;
 }
 void se_load_rom_overlay(bool visible){
+  if (!show_ui)
+    visible = false;
   if(visible==false)return;
   ImVec2 w_pos, w_size;
   igGetWindowPos(&w_pos);
@@ -5923,6 +5929,8 @@ void se_draw_save_states(bool cloud){
   if(!emu_state.rom_loaded)se_pop_disabled();
 }
 void se_draw_menu_panel(){
+    if (!show_ui)
+        return;
   ImGuiStyle *style = igGetStyle();
   int win_w = igGetWindowContentRegionWidth();
   se_section(ICON_FK_FLOPPY_O " Save States");
@@ -6624,7 +6632,14 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       params+=2;
     }
     str_result=emu_state.rom_loaded?"ok":"Failed to load ROM";
-  }else if(strcmp(cmd,"/setting")==0){
+  }
+  else if (strcmp(cmd, "/show_ui") == 0) {
+      show_ui = true;
+  }
+  else if (strcmp(cmd, "/hide_ui") == 0) {
+      show_ui = false;
+  }
+  else if(strcmp(cmd,"/setting")==0){
     while(*params){
       if(strcmp(params[0],"ui_type")==0){
         if(strcmp(params[1],"DESKTOP")==0)gui_state.ui_type = SE_UI_DESKTOP; 
@@ -7023,10 +7038,12 @@ static void frame(void) {
   if (gui_state.test_runner_mode==false&&se_begin_menu_bar())
   {
     float menu_bar_y = igGetCursorPosY();
+    if(show_ui)
     se_panel_toggle(SE_REGION_MENU,&gui_state.sidebar_open,ICON_FK_BARS,se_localize_and_cache("Show/Hide Menu Panel"));
 
 #ifdef ENABLE_RETRO_ACHIEVEMENTS
     if(retro_achievements_has_game_loaded()){
+      if (show_ui)
       se_panel_toggle(SE_REGION_BLANK,&gui_state.ra_sidebar_open,ICON_FK_TROPHY,se_localize_and_cache("Show/Hide RetroAchievements Panel"));
     }
 #endif
@@ -7057,8 +7074,10 @@ static void frame(void) {
       if(vol_x<toggle_x+(sel_width+1)*num_toggles)vol_x=toggle_x+(sel_width+1)*num_toggles;
       igSetCursorPosX(vol_x);
       igPushItemWidth(-0.01);
+      if (show_ui) {
       se_slider_int_themed("",&v,0,100,"%2.f%% "ICON_FK_VOLUME_UP);
       se_tooltip("Adjust volume");
+      }
       gui_state.settings.volume=v*0.01;
       igPopItemWidth();
       igSetCursorPosX(orig_x);
@@ -7165,7 +7184,9 @@ static void frame(void) {
       if(hardcore_disabled)se_push_disabled();
       bool active_button = i==curr_toggle;
       if(active_button)igPushStyleColorVec4(ImGuiCol_Button, style->Colors[ImGuiCol_ButtonActive]);
-      if(se_button_themed(SE_REGION_BLANK+ (active_button? 2:0),toggle_labels[i],(ImVec2){sel_width, SE_MENU_BAR_HEIGHT},true))next_toggle_id = i;
+      if (show_ui) {
+          if (se_button_themed(SE_REGION_BLANK + (active_button ? 2 : 0), toggle_labels[i], (ImVec2) { sel_width, SE_MENU_BAR_HEIGHT }, true))next_toggle_id = i;
+      }
       igSameLine(0,1);
       if(hardcore_disabled) se_tooltip("Disabled in Hardcore Mode");
       else se_tooltip(toggle_tooltips[i]);
