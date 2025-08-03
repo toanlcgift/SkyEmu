@@ -3878,6 +3878,8 @@ bool se_handle_keybind_settings(int keybind_type, se_keybind_state_t * state){
   return settings_changed;
 }
 void se_draw_onscreen_controller(sb_emu_state_t*state, int mode, float win_x, float win_y, float win_w, float win_h, bool preview, bool center){  
+  if (!show_ui)
+    return;
   if(state->run_mode!=SB_MODE_RUN&&preview==false)return;
 
   //Split the region in half if this is a both LEFT/RIGHT command
