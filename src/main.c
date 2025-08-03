@@ -958,10 +958,10 @@ static void se_panel_toggle(int region, bool * is_open, const char* icon, const 
   igPushIDStr(icon);
   if(*is_open){
     igPushStyleColorVec4(ImGuiCol_Button, igGetStyle()->Colors[ImGuiCol_ButtonActive]);
-    if(se_button_themed(region+2,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,SE_MENU_BAR_HEIGHT},region!=SE_REGION_MENU)){*is_open=!*is_open;}
+    if(se_button_themed(region+2,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},region!=SE_REGION_MENU)){*is_open=!*is_open;}
     igPopStyleColor(1);
   }else{
-    if(se_button_themed(region,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,SE_MENU_BAR_HEIGHT},region!=SE_REGION_MENU)){
+    if(se_button_themed(region,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},region!=SE_REGION_MENU)){
       *is_open=!*is_open;
       gui_state.last_opened_panel=is_open;
     }
@@ -3168,10 +3168,10 @@ static void se_draw_debug_menu(){
       igPushIDInt(id++);
       if(desc->visible){
         igPushStyleColorVec4(ImGuiCol_Button, style->Colors[ImGuiCol_ButtonActive]);
-        if(se_button_themed(SE_REGION_BLANK_ACTIVE,desc->short_label,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,SE_MENU_BAR_HEIGHT},true)){desc->visible=!desc->visible;}
+        if(se_button_themed(SE_REGION_BLANK_ACTIVE,desc->short_label,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},true)){desc->visible=!desc->visible;}
         igPopStyleColor(1);
       }else{
-        if(se_button_themed(SE_REGION_BLANK,desc->short_label,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,SE_MENU_BAR_HEIGHT},true)){
+        if(se_button_themed(SE_REGION_BLANK,desc->short_label,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},true)){
           desc->visible=!desc->visible;
           gui_state.last_opened_panel = &desc->visible;
         }
@@ -6566,7 +6566,7 @@ static void se_init_audio(){
 bool se_begin_menu_bar(){
   ImGuiContext* g = igGetCurrentContext();
   ImGuiStyle *style = igGetStyle();
-  ImVec2 menu_bar_size={g->IO.DisplaySize.x, g->NextWindowData.MenuBarOffsetMinVal.y + SE_MENU_BAR_HEIGHT};
+  ImVec2 menu_bar_size={g->IO.DisplaySize.x, g->NextWindowData.MenuBarOffsetMinVal.y + show_ui ? SE_MENU_BAR_HEIGHT : 0 };
   float y_off = (3+gui_state.menubar_hide_timer-se_time())*2.;
   if(y_off>0)y_off=0;
   if(gui_state.settings.always_show_menubar)y_off=0;
@@ -7186,7 +7186,7 @@ static void frame(void) {
       bool active_button = i==curr_toggle;
       if(active_button)igPushStyleColorVec4(ImGuiCol_Button, style->Colors[ImGuiCol_ButtonActive]);
       if (show_ui) {
-          if (se_button_themed(SE_REGION_BLANK + (active_button ? 2 : 0), toggle_labels[i], (ImVec2) { sel_width, SE_MENU_BAR_HEIGHT }, true))next_toggle_id = i;
+          if (se_button_themed(SE_REGION_BLANK + (active_button ? 2 : 0), toggle_labels[i], (ImVec2) { sel_width, show_ui?SE_MENU_BAR_HEIGHT:0 }, true))next_toggle_id = i;
       }
       igSameLine(0,1);
       if(hardcore_disabled) se_tooltip("Disabled in Hardcore Mode");
