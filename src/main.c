@@ -86,7 +86,7 @@
 
 #define SE_FIELD_INDENT 125
 
-bool show_ui = false;
+bool show_ui = true;
 
 const static char* se_keybind_names[SE_NUM_KEYBINDS]={
   "A",
@@ -2425,6 +2425,37 @@ void se_load_rom_from_emu_state(sb_emu_state_t*emu){
     emu->system = SYSTEM_NDS;
     emu->rom_loaded = true; 
   }
+}
+
+const char* html_content;
+
+void se_load_html(const char *filename){
+    size_t data_size=0;
+    uint8_t*data = sb_load_file_data(filename,&data_size);
+    if(!data_size){
+        printf("Failed to load file from %s\n",filename);
+        return;
+    }
+
+    // Allocate a new buffer that is null-terminated
+    char* str = malloc(data_size + 1);
+    if (!str) {
+        printf("Memory allocation failed\n");
+        free(data);
+        return;
+    }
+
+    memcpy(str, data, data_size);
+    str[data_size] = '\0';  // Null-terminate the string
+
+    html_content = str;
+
+    // Use html_content as needed
+    printf("Loaded HTML content:\n%s\n", html_content);
+
+    // Cleanup
+    free(str);
+    free(data);
 }
 void se_load_rom(const char *filename){
   se_reset_rewind_buffer(&rewind_buffer);
@@ -6501,7 +6532,7 @@ void se_draw_menu_panel(){
 #ifdef ENABLE_HTTP_CONTROL_SERVER
   bool enable_hcs = gui_state.settings.http_control_server_enable;
   se_checkbox("Enable HTTP Control Server",&enable_hcs);
-  gui_state.settings.http_control_server_enable =enable_hcs;
+  gui_state.settings.http_control_server_enable = true;
   if(enable_hcs){
     int port = gui_state.settings.http_control_server_port;
     se_text("Server Port");igSameLine(SE_FIELD_INDENT,0);
@@ -6639,6 +6670,9 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
   }
   else if (strcmp(cmd, "/hide_ui") == 0) {
       show_ui = false;
+  }
+  else if (strcmp(cmd, "/index.html") == 0) {
+      str_result = html_content;
   }
   else if(strcmp(cmd,"/setting")==0){
     while(*params){
@@ -7563,7 +7597,7 @@ void se_load_settings(){
       gui_state.settings.touch_controls_scale=1.0;
       gui_state.settings.touch_controls_show_turbo = 1; 
       gui_state.settings.save_to_path = false;
-      gui_state.settings.http_control_server_enable = false; 
+      gui_state.settings.http_control_server_enable = true;
       gui_state.settings.http_control_server_port=8080;
       gui_state.settings.avoid_overlaping_touchscreen = true;
     }
@@ -8836,6 +8870,12 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(JNIEnv *
   const char *nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
   se_file_browser_accept(nativeFilePath);
   (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
+}
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
+    const char *nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
+    gui_state.ran_from_launcher=true;
+    se_load_html(nativeFilePath);
+    (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
 #endif
 
