@@ -2453,8 +2453,6 @@ void se_load_html(const char *filename){
     // Use html_content as needed
     printf("Loaded HTML content:\n%s\n", html_content);
 
-    // Cleanup
-    free(str);
     free(data);
 }
 void se_load_rom(const char *filename){
@@ -6674,6 +6672,16 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       show_ui = false;
   }
   else if (strcmp(cmd, "/index.html") == 0) {
+      str_result = html_content;
+  }
+  else if (strcmp(cmd, "/load_html") == 0) {
+      while (*params) {
+          if (strcmp(params[0], "path") == 0)se_load_html(params[1]);
+          if (strcmp(params[0], "pause") == 0) {
+              if (atoi(params[1]))emu_state.run_mode = SB_MODE_PAUSE;
+          };
+          params += 2;
+      }
       str_result = html_content;
   }
   else if(strcmp(cmd,"/setting")==0){
