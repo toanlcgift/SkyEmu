@@ -8875,7 +8875,6 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(JNIEnv *
 }
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
     const char *nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
-    gui_state.ran_from_launcher=true;
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }

@@ -407,4 +407,8 @@ public class EnhancedNativeActivity extends NativeActivity {
     public void LoadRom(String filePath){
         se_android_load_rom(filePath);
     }
+
+    public void LoadHtml(String filePath){
+        se_android_load_html(filePath);
+    }
 }
