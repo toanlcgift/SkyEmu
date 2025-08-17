@@ -8886,6 +8886,11 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1theme(JNIEnv* env, jobject thiz, jstring filePath) {
+    const char* nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
+    se_load_theme_from_file(nativeFilePath);
+    (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
+}
 #endif
 
 sapp_desc sokol_main(int argc, char* argv[]) {
