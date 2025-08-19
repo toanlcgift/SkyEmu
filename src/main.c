@@ -2819,7 +2819,7 @@ static void se_draw_emulated_system_screen(bool preview){
   float dims[2]={scr_w/se_dpi_scale(),scr_h/se_dpi_scale()};
   bool portrait = false; 
   float min_dim = se_compute_touchscreen_controls_min_dim(scr_w,scr_h, &portrait);
-  bool touch_controller_active = gui_state.last_touch_time>=0||gui_state.settings.auto_hide_touch_controls==false;
+  bool touch_controller_active = false;
   if(!touch_controller_active)min_dim = 0;
 
   float native_w = dims[0], native_h = dims[1];
