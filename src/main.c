@@ -7609,7 +7609,7 @@ void se_load_settings(){
       gui_state.settings.save_to_path = false;
       gui_state.settings.http_control_server_enable = true;
       gui_state.settings.http_control_server_port=8080;
-      gui_state.settings.avoid_overlaping_touchscreen = true;
+      gui_state.settings.avoid_overlaping_touchscreen = false;
     }
     if(gui_state.settings.settings_file_version<3){
       gui_state.settings.gui_scale_factor = 1.0; 
@@ -7916,7 +7916,7 @@ static int se_draw_theme_region_tint_partial(int region, float x, float y, float
   int gamepad_mask = portrait? 0x30 : 0xC0;
   int skip_mask = portrait? SE_RESIZE_ONLY_LANDSCAPE : SE_RESIZE_ONLY_PORTRAIT;
   //When overlap is allowed, just render gamepad over screen
-  if(gui_state.settings.avoid_overlaping_touchscreen==false)gamepad_mask = 0x0;
+  gamepad_mask = 0x0;
   if(gui_state.settings.auto_hide_touch_controls && gui_state.last_touch_time<0.01){
     skip_mask = SE_RESIZE_ONLY_LANDSCAPE | SE_RESIZE_ONLY_PORTRAIT;
     gamepad_mask = 0;
@@ -8886,12 +8886,10 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
-void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1theme(JNIEnv* env, jobject thiz, jstring filePath) {
-    const char* nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
-    strncpy(gui_state.paths.theme, filePath, SB_FILE_PATH_SIZE);
-	gui_state.settings.theme = SE_THEME_CUSTOM;
-    (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz) {
+    show_ui = !show_ui;
 }
+
 #endif
 
 sapp_desc sokol_main(int argc, char* argv[]) {
