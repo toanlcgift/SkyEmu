@@ -399,6 +399,7 @@ public class EnhancedNativeActivity extends NativeActivity {
     public native void se_android_load_file(String filePath);
     public native void se_android_load_rom(String filePath);
     public native void se_android_load_html(String filePath);
+    public native void se_android_load_theme(String filePath);
 
     public void LoadFile(String filePath){
         se_android_load_file(filePath);
@@ -410,5 +411,9 @@ public class EnhancedNativeActivity extends NativeActivity {
 
     public void LoadHtml(String filePath){
         se_android_load_html(filePath);
+    }
+
+    public void LoadTheme(String filePath){
+        se_android_load_theme(filePath);
     }
 }
