@@ -253,14 +253,14 @@ ifeq ($(findstring -nghttp3,$(CFG))$(findstring -ngtcp2,$(CFG)),-nghttp3-ngtcp2)
 endif
 
 ifneq ($(findstring -zlib,$(CFG))$(ZLIB),)
-  ZLIB_PATH ?= $(PROOT)/../zlib
+  #ZLIB_PATH ?= $(PROOT)/../zlib
   # These CPPFLAGS are also required when compiling the curl tool via 'src'.
-  CPPFLAGS += -DHAVE_LIBZ
-  CPPFLAGS += -I"$(ZLIB_PATH)/include"
-  _LDFLAGS += -L"$(ZLIB_PATH)/lib"
-  ZLIB_LIBS ?= -lz
-  _LIBS += $(ZLIB_LIBS)
-  ZLIB := 1
+  #CPPFLAGS += -DHAVE_LIBZ
+  #CPPFLAGS += -I"$(ZLIB_PATH)/include"
+  #_LDFLAGS += -L"$(ZLIB_PATH)/lib"
+  #ZLIB_LIBS ?= -lz
+  #_LIBS += $(ZLIB_LIBS)
+  #ZLIB := 1
 endif
 ifneq ($(findstring -zstd,$(CFG)),)
   ZSTD_PATH ?= $(PROOT)/../zstd

@@ -21,7 +21,7 @@ android {
         setProperty("archivesBaseName", applicationId + "-v" + versionCode)
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_STL=c++_static', '-DANDROID=1', '-DNDK_DEBUG=0', '-DCMAKE_BUILD_TYPE=RELWITHDEBINFO', "-DANDROID_ARM_NEON=TRUE"
+                arguments '-DANDROID_STL=c++_static', '-DANDROID=1', '-DNDK_DEBUG=0', '-DHAVE_LIBZ=0', '-DCMAKE_BUILD_TYPE=RELWITHDEBINFO', "-DANDROID_ARM_NEON=TRUE"
                 targets "SkyEmu"
             }
         }
@@ -40,6 +40,12 @@ android {
         cmake {
             version '3.18.1'
             path '../../../CMakeLists.txt'
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = false
+            excludes += ['**/libz.so']
         }
     }
 }

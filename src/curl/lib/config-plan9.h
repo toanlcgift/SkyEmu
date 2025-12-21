@@ -92,7 +92,7 @@
 #define HAVE_INET_NTOP 1
 #define HAVE_INET_PTON 1
 #define HAVE_LIBGEN_H 1
-#define HAVE_LIBZ 1
+#define HAVE_LIBZ 0
 #define HAVE_LOCALE_H 1
 #define HAVE_LONGLONG 1
 #define HAVE_NETDB_H 1

@@ -73,7 +73,7 @@
 
 /* Comment this out if zlib is always going to be at least ver. 1.2.0.4
    (doing so will reduce code size slightly). */
-#define OLD_ZLIB_SUPPORT 1
+#define OLD_ZLIB_SUPPORT 0
 
 #define GZIP_MAGIC_0 0x1f
 #define GZIP_MAGIC_1 0x8b
