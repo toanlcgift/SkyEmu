@@ -4583,6 +4583,28 @@ void se_android_get_language(char* language_buffer, size_t buffer_size){
   }
 }
 
+void se_android_remote_keycode_callback(const char* data){
+    ANativeActivity* activity =(ANativeActivity*)sapp_android_get_native_activity();
+    // Attaches the current thread to the JVM.
+    JavaVM *pJavaVM = activity->vm;
+    JNIEnv *pJNIEnv = activity->env;
+
+    jint nResult = (*pJavaVM)->AttachCurrentThread(pJavaVM, &pJNIEnv, NULL );
+
+    if ( nResult != JNI_ERR ){
+        // Retrieves NativeActivity.
+        jobject nativeActivity = activity->clazz;
+        jclass ClassNativeActivity = (*pJNIEnv)->GetObjectClass(pJNIEnv, nativeActivity );
+        jmethodID MethodCallBack= (*pJNIEnv)->GetMethodID(pJNIEnv, ClassNativeActivity, "setRemoteKeycodeCallback", "(Ljava/lang/String;)V" );
+
+        jstring message = (*pJNIEnv)->NewStringUTF(pJNIEnv, data);
+        (*pJNIEnv)->CallVoidMethod(pJNIEnv, nativeActivity, MethodCallBack, message);
+
+        // Finished with the JVM.
+        (*pJavaVM)->DetachCurrentThread(pJavaVM);
+    }
+}
+
 void se_android_send_controller_key(uint32_t bound_id, bool value) {
   se_controller_state_t *cont = &gui_state.controller;
   for(int k= 0; k<SE_NUM_KEYBINDS;++k){
@@ -6848,6 +6870,9 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       for(int i=0; i<SE_NUM_KEYBINDS;++i){
         if(strcmp(params[0],se_keybind_names[i])==0){
           gui_state.hcs_joypad.inputs[i]=atof(params[1]);
+#ifdef SE_PLATFORM_ANDROID
+          se_android_remote_keycode_callback(params);
+#endif
           break;
         }
       }

@@ -66,6 +66,10 @@ public class EnhancedNativeActivity extends NativeActivity {
     public static String getLanguage() {
         return Locale.getDefault().toString();
     }
+
+    public void setRemoteKeycodeCallback(String keyCode) {
+        // empty
+    }
     /*Handle permission request results*/
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
