@@ -6749,7 +6749,7 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
     }
     str_result=emu_state.rom_loaded?"ok":"Failed to load ROM";
   }
-  else if(strcmp(cmd, "external_menu") == 0) {
+  else if(strcmp(cmd, "/external_menu") == 0) {
 #ifdef SE_PLATFORM_ANDROID
       se_android_open_external_menu();
 #endif
