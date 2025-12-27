@@ -4583,21 +4583,29 @@ void se_android_get_language(char* language_buffer, size_t buffer_size){
   }
 }
 
-void se_android_remote_keycode_callback(const char* data){
-    ANativeActivity* activity =(ANativeActivity*)sapp_android_get_native_activity();
+void se_android_remote_keycode_callback(const char *data1, const char* data2) {
+
+    jchar chars[3];
+    chars[0] = (unsigned char)data1[0];
+    chars[1] = '=';
+    chars[2] = (unsigned char)data2[0];
+
+    ANativeActivity *activity = (ANativeActivity *) sapp_android_get_native_activity();
     // Attaches the current thread to the JVM.
     JavaVM *pJavaVM = activity->vm;
     JNIEnv *pJNIEnv = activity->env;
 
-    jint nResult = (*pJavaVM)->AttachCurrentThread(pJavaVM, &pJNIEnv, NULL );
+    jint nResult = (*pJavaVM)->AttachCurrentThread(pJavaVM, &pJNIEnv, NULL);
 
-    if ( nResult != JNI_ERR ){
+    if (nResult != JNI_ERR) {
         // Retrieves NativeActivity.
         jobject nativeActivity = activity->clazz;
-        jclass ClassNativeActivity = (*pJNIEnv)->GetObjectClass(pJNIEnv, nativeActivity );
-        jmethodID MethodCallBack= (*pJNIEnv)->GetMethodID(pJNIEnv, ClassNativeActivity, "setRemoteKeycodeCallback", "(Ljava/lang/String;)V" );
+        jclass ClassNativeActivity = (*pJNIEnv)->GetObjectClass(pJNIEnv, nativeActivity);
+        jmethodID MethodCallBack = (*pJNIEnv)->GetMethodID(pJNIEnv, ClassNativeActivity,
+                                                           "setRemoteKeycodeCallback",
+                                                           "(Ljava/lang/String;)V");
 
-        jstring message = (*pJNIEnv)->NewStringUTF(pJNIEnv, data);
+        jstring message = (*pJNIEnv)->NewString(pJNIEnv, chars, 3);
         (*pJNIEnv)->CallVoidMethod(pJNIEnv, nativeActivity, MethodCallBack, message);
 
         // Finished with the JVM.
@@ -6871,7 +6879,7 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
         if(strcmp(params[0],se_keybind_names[i])==0){
           gui_state.hcs_joypad.inputs[i]=atof(params[1]);
 #ifdef SE_PLATFORM_ANDROID
-          se_android_remote_keycode_callback(params);
+          se_android_remote_keycode_callback(params[0],params[1]);
 #endif
           break;
         }
