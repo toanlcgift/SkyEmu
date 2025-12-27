@@ -70,6 +70,10 @@ public class EnhancedNativeActivity extends NativeActivity {
     public void setRemoteKeycodeCallback(String keyCode) {
         // empty
     }
+
+    public void openExternalMenu() {
+        // empty
+    }
     /*Handle permission request results*/
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

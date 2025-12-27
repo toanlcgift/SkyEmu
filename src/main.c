@@ -4613,6 +4613,28 @@ void se_android_remote_keycode_callback(const char *data1, const char* data2) {
     }
 }
 
+void se_android_open_external_menu() {
+    ANativeActivity *activity = (ANativeActivity *) sapp_android_get_native_activity();
+    // Attaches the current thread to the JVM.
+    JavaVM *pJavaVM = activity->vm;
+    JNIEnv *pJNIEnv = activity->env;
+
+    jint nResult = (*pJavaVM)->AttachCurrentThread(pJavaVM, &pJNIEnv, NULL);
+
+    if (nResult != JNI_ERR) {
+        // Retrieves NativeActivity.
+        jobject nativeActivity = activity->clazz;
+        jclass ClassNativeActivity = (*pJNIEnv)->GetObjectClass(pJNIEnv, nativeActivity);
+        jmethodID MethodCallBack = (*pJNIEnv)->GetMethodID(pJNIEnv, ClassNativeActivity,
+                                                           "openExternalMenu",
+                                                           "()V");
+        (*pJNIEnv)->CallVoidMethod(pJNIEnv, nativeActivity, MethodCallBack);
+
+        // Finished with the JVM.
+        (*pJavaVM)->DetachCurrentThread(pJavaVM);
+    }
+}
+
 void se_android_send_controller_key(uint32_t bound_id, bool value) {
   se_controller_state_t *cont = &gui_state.controller;
   for(int k= 0; k<SE_NUM_KEYBINDS;++k){
@@ -6726,6 +6748,11 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       params+=2;
     }
     str_result=emu_state.rom_loaded?"ok":"Failed to load ROM";
+  }
+  else if(strcmp(cmd, "external_menu") == 0) {
+#ifdef SE_PLATFORM_ANDROID
+      se_android_open_external_menu();
+#endif
   }
   else if (strcmp(cmd, "/show_ui") == 0) {
       show_ui = true;
