@@ -6754,6 +6754,18 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       se_android_open_external_menu();
 #endif
   }
+  else if (strcmp(cmd, "/x1") == 0) {
+      emu_state.step_frames=1;
+  }
+  else if (strcmp(cmd, "/x2") == 0) {
+      emu_state.step_frames=2;
+  }
+  else if (strcmp(cmd, "/x4") == 0) {
+      emu_state.step_frames=4;
+  }
+  else if (strcmp(cmd, "/x8") == 0) {
+      emu_state.step_frames=8;
+  }
   else if (strcmp(cmd, "/show_ui") == 0) {
       show_ui = true;
   }
