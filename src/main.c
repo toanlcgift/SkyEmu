@@ -8993,8 +8993,16 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
-void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz) {
-    show_ui = !show_ui;
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
+    show_ui = isShow;
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on() {
+    gui_state.settings.stretch_to_fit = 1;
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off() {
+    gui_state.settings.stretch_to_fit = 0;
 }
 
 #endif

@@ -407,7 +407,9 @@ public class EnhancedNativeActivity extends NativeActivity {
     public native void se_android_load_file(String filePath);
     public native void se_android_load_rom(String filePath);
     public native void se_android_load_html(String filePath);
-    public native void se_android_show_ui();
+    public native void se_android_show_ui(boolean isShow);
+    public native void se_android_stretch_on();
+    public native void se_android_stretch_off();
 
     public void LoadFile(String filePath){
         se_android_load_file(filePath);
@@ -422,6 +424,18 @@ public class EnhancedNativeActivity extends NativeActivity {
     }
     
     public void ShowUI(){
-        se_android_show_ui();
+        se_android_show_ui(true);
+    }
+
+    public void HideUI(){
+        se_android_show_ui(false);
+    }
+
+    public void StretchOn() {
+        se_android_stretch_on();
+    }
+
+    public void StretchOff() {
+        se_android_stretch_off();
     }
 }
