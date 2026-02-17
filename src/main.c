@@ -6763,7 +6763,9 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
   }
   else if (strcmp(cmd, "/ping") == 0) { 
       str_result = "pong"; 
+#ifdef SE_PLATFORM_ANDROID
       se_android_ping();
+#endif
   }
   else if(strcmp(cmd,"/load_rom")==0){
     while(*params){
