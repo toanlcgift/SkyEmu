@@ -74,6 +74,10 @@ public class EnhancedNativeActivity extends NativeActivity {
     public void openExternalMenu() {
         // empty
     }
+
+    public void ping() {
+        // empty
+    }
     /*Handle permission request results*/
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
