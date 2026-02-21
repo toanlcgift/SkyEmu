@@ -972,13 +972,13 @@ static void se_panel_toggle(int region, bool * is_open, const char* icon, const 
   igPushIDStr(icon);
   if(*is_open){
     igPushStyleColorVec4(ImGuiCol_Button, igGetStyle()->Colors[ImGuiCol_ButtonActive]);
-    if(se_button_themed(region+2,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},region!=SE_REGION_MENU)){*is_open=!*is_open;}
+    if (se_button_themed(region + 2, icon, (ImVec2) { SE_MENU_BAR_BUTTON_WIDTH, show_ui ? SE_MENU_BAR_HEIGHT : 0 }, region != SE_REGION_MENU)) { *is_open = !*is_open; }
     igPopStyleColor(1);
   }else{
-    if(se_button_themed(region,icon,(ImVec2){SE_MENU_BAR_BUTTON_WIDTH,show_ui?SE_MENU_BAR_HEIGHT:0},region!=SE_REGION_MENU)){
-      *is_open=!*is_open;
-      gui_state.last_opened_panel=is_open;
-    }
+      if (se_button_themed(region, icon, (ImVec2) { SE_MENU_BAR_BUTTON_WIDTH, show_ui ? SE_MENU_BAR_HEIGHT : 0 }, region != SE_REGION_MENU)) {
+          *is_open = !*is_open;
+          gui_state.last_opened_panel = is_open;
+      }
   }
   igPopID();
   igSameLine(0,1);
@@ -6800,6 +6800,12 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
   else if (strcmp(cmd, "/hide_ui") == 0) {
       show_ui = false;
   }
+  else if (strcmp(cmd, "/stretch_on") == 0) {
+      gui_state.settings.stretch_to_fit = 1;
+  }
+  else if (strcmp(cmd, "/stretch_off") == 0) {
+      gui_state.settings.stretch_to_fit = 0;
+  }
   else if (strcmp(cmd, "/index.html") == 0) {
       str_result = html_content;
   }
@@ -7365,7 +7371,7 @@ static void frame(void) {
       bool active_button = i==curr_toggle;
       if(active_button)igPushStyleColorVec4(ImGuiCol_Button, style->Colors[ImGuiCol_ButtonActive]);
       if (show_ui) {
-          if (se_button_themed(SE_REGION_BLANK + (active_button ? 2 : 0), toggle_labels[i], (ImVec2) { sel_width, show_ui?SE_MENU_BAR_HEIGHT:0 }, true))next_toggle_id = i;
+          if (se_button_themed(SE_REGION_BLANK + (active_button ? 2 : 0), toggle_labels[i], (ImVec2) { sel_width, show_ui ? SE_MENU_BAR_HEIGHT : 0 }, true))next_toggle_id = i;
       }
       igSameLine(0,1);
       if(hardcore_disabled) se_tooltip("Disabled in Hardcore Mode");
