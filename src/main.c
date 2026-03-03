@@ -9039,6 +9039,14 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off() {
     gui_state.settings.stretch_to_fit = 0;
 }
 
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+    se_capture_state_slot(slot);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+    se_restore_state_slot(slot);
+}
+
 #endif
 
 sapp_desc sokol_main(int argc, char* argv[]) {

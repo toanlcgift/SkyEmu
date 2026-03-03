@@ -414,6 +414,8 @@ public class EnhancedNativeActivity extends NativeActivity {
     public native void se_android_show_ui(boolean isShow);
     public native void se_android_stretch_on();
     public native void se_android_stretch_off();
+    public native void se_android_capture_state_slot(int slot);
+    public native void se_android_restore_state_slot(int slot);
 
     public void LoadFile(String filePath){
         se_android_load_file(filePath);
