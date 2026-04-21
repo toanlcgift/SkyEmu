@@ -6819,6 +6819,49 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       }
       str_result = html_content;
   }
+  else if(strcmp(cmd,"/settings")==0){
+    *mime_type = "application/json";
+    char buffer[8192]={0};
+    int off = 0;
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"{\n");
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"volume\": %f,\n",gui_state.settings.volume);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"gb_palette\": [%d, %d, %d, %d],\n",gui_state.settings.gb_palette[0],gui_state.settings.gb_palette[1],gui_state.settings.gb_palette[2],gui_state.settings.gb_palette[3]);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"ghosting\": %f,\n",gui_state.settings.ghosting);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"color_correction\": %f,\n",gui_state.settings.color_correction);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"integer_scaling\": %d,\n",gui_state.settings.integer_scaling);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"screen_shader\": %d,\n",gui_state.settings.screen_shader);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"screen_rotation\": %d,\n",gui_state.settings.screen_rotation);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"stretch_to_fit\": %d,\n",gui_state.settings.stretch_to_fit);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"auto_hide_touch_controls\": %d,\n",gui_state.settings.auto_hide_touch_controls);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"touch_controls_opacity\": %f,\n",gui_state.settings.touch_controls_opacity);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"always_show_menubar\": %d,\n",gui_state.settings.always_show_menubar);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"language\": %d,\n",gui_state.settings.language);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"touch_controls_scale\": %f,\n",gui_state.settings.touch_controls_scale);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"touch_controls_show_turbo\": %d,\n",gui_state.settings.touch_controls_show_turbo);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"save_to_path\": %d,\n",gui_state.settings.save_to_path);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"force_dmg_mode\": %d,\n",gui_state.settings.force_dmg_mode);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"gba_color_correction_mode\": %d,\n",gui_state.settings.gba_color_correction_mode);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"avoid_overlapping_touchscreen\": %d,\n",gui_state.settings.avoid_overlaping_touchscreen);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"custom_font_scale\": %f,\n",gui_state.settings.custom_font_scale);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"hardcore_mode\": %d,\n",gui_state.settings.hardcore_mode);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"draw_challenge_indicators\": %d,\n",gui_state.settings.draw_challenge_indicators);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"draw_progress_indicators\": %d,\n",gui_state.settings.draw_progress_indicators);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"draw_leaderboard_trackers\": %d,\n",gui_state.settings.draw_leaderboard_trackers);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"draw_notifications\": %d,\n",gui_state.settings.draw_notifications);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"gui_scale_factor\": %f,\n",gui_state.settings.gui_scale_factor);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"only_one_notification\": %d,\n",gui_state.settings.only_one_notification);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"enable_download_cache\": %d,\n",gui_state.settings.enable_download_cache);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"nds_layout\": %d,\n",gui_state.settings.nds_layout);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"touch_screen_show_button_labels\": %d,\n",gui_state.settings.touch_screen_show_button_labels);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"show_screen_bezel\": %d,\n",gui_state.settings.show_screen_bezel);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"http_control_server_enable\": %d,\n",gui_state.settings.http_control_server_enable);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"  \"http_control_server_port\": %d\n",gui_state.settings.http_control_server_port);
+    off+=snprintf(buffer+off,sizeof(buffer)-off,"}");
+    str_result = buffer;
+    const char* result=strdup(str_result);
+    *result_size=strlen(result);
+    return (uint8_t*)result;
+  }
   else if(strcmp(cmd,"/setting")==0){
     while(*params){
       if(strcmp(params[0],"ui_type")==0){
@@ -6845,6 +6888,34 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
           gui_state.menubar_hide_timer = 0; 
         }
       }
+      else if(strcmp(params[0],"volume")==0)gui_state.settings.volume=atof(params[1]);
+      else if(strcmp(params[0],"gb_palette_0")==0)gui_state.settings.gb_palette[0]=atoi(params[1]);
+      else if(strcmp(params[0],"gb_palette_1")==0)gui_state.settings.gb_palette[1]=atoi(params[1]);
+      else if(strcmp(params[0],"gb_palette_2")==0)gui_state.settings.gb_palette[2]=atoi(params[1]);
+      else if(strcmp(params[0],"gb_palette_3")==0)gui_state.settings.gb_palette[3]=atoi(params[1]);
+      else if(strcmp(params[0],"ghosting")==0)gui_state.settings.ghosting=atof(params[1]);
+      else if(strcmp(params[0],"color_correction")==0)gui_state.settings.color_correction=atof(params[1]);
+      else if(strcmp(params[0],"integer_scaling")==0)gui_state.settings.integer_scaling=atoi(params[1]);
+      else if(strcmp(params[0],"screen_rotation")==0)gui_state.settings.screen_rotation=atoi(params[1]);
+      else if(strcmp(params[0],"auto_hide_touch_controls")==0)gui_state.settings.auto_hide_touch_controls=atoi(params[1]);
+      else if(strcmp(params[0],"touch_controls_opacity")==0)gui_state.settings.touch_controls_opacity=atof(params[1]);
+      else if(strcmp(params[0],"touch_controls_show_turbo")==0)gui_state.settings.touch_controls_show_turbo=atoi(params[1]);
+      else if(strcmp(params[0],"save_to_path")==0)gui_state.settings.save_to_path=atoi(params[1]);
+      else if(strcmp(params[0],"force_dmg_mode")==0)gui_state.settings.force_dmg_mode=atoi(params[1]);
+      else if(strcmp(params[0],"gba_color_correction_mode")==0)gui_state.settings.gba_color_correction_mode=atoi(params[1]);
+      else if(strcmp(params[0],"avoid_overlapping_touchscreen")==0)gui_state.settings.avoid_overlaping_touchscreen=atoi(params[1]);
+      else if(strcmp(params[0],"custom_font_scale")==0)gui_state.settings.custom_font_scale=atof(params[1]);
+      else if(strcmp(params[0],"hardcore_mode")==0)gui_state.settings.hardcore_mode=atoi(params[1]);
+      else if(strcmp(params[0],"draw_challenge_indicators")==0)gui_state.settings.draw_challenge_indicators=atoi(params[1]);
+      else if(strcmp(params[0],"draw_progress_indicators")==0)gui_state.settings.draw_progress_indicators=atoi(params[1]);
+      else if(strcmp(params[0],"draw_leaderboard_trackers")==0)gui_state.settings.draw_leaderboard_trackers=atoi(params[1]);
+      else if(strcmp(params[0],"draw_notifications")==0)gui_state.settings.draw_notifications=atoi(params[1]);
+      else if(strcmp(params[0],"gui_scale_factor")==0)gui_state.settings.gui_scale_factor=atof(params[1]);
+      else if(strcmp(params[0],"only_one_notification")==0)gui_state.settings.only_one_notification=atoi(params[1]);
+      else if(strcmp(params[0],"enable_download_cache")==0)gui_state.settings.enable_download_cache=atoi(params[1]);
+      else if(strcmp(params[0],"nds_layout")==0)gui_state.settings.nds_layout=atoi(params[1]);
+      else if(strcmp(params[0],"touch_screen_show_button_labels")==0)gui_state.settings.touch_screen_show_button_labels=atoi(params[1]);
+      else if(strcmp(params[0],"show_screen_bezel")==0)gui_state.settings.show_screen_bezel=atoi(params[1]);
       params+=2;
     }
     str_result=emu_state.rom_loaded?"ok":"Failed to load ROM";
