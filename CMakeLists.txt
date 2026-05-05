@@ -337,6 +337,15 @@ if(NOT RETRO_CORE_ONLY)
       include_directories(${SDL2_INCLUDE_DIRS})
   endif()
 
+  # ---------------------------------------------------------------------
+  # Header search path for iOS source files
+  # ---------------------------------------------------------------------
+  # Several Objective‑C source files (e.g., src/ios/SkyEmu.m) include headers
+  # using a relative path like "ios/SkyEmu.h".  Adding the top‑level "src"
+  # directory to the include path makes that include resolve correctly for
+  # both the executable and the static‑library builds.
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+
   if(ENABLE_RETRO_ACHIEVEMENTS)
     add_definitions(-DENABLE_RETRO_ACHIEVEMENTS=1)
     add_definitions(-DRC_CLIENT_SUPPORTS_HASH)
