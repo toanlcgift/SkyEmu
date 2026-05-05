@@ -6,7 +6,6 @@
 
 #include "ios/SkyEmu.h"
 #include "../shared.h"
-#include "../main.h"
 
 // External declarations from main.c
 extern sb_emu_state_t emu_state;
