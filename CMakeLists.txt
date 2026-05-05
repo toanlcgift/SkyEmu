@@ -385,6 +385,25 @@ if(NOT RETRO_CORE_ONLY)
       add_definitions(-DSE_PLATFORM_IOS)
   endif()
 
+  # ---------------------------------------------------------------------
+  # OpenSSL header handling for iOS builds (static library case)
+  # ---------------------------------------------------------------------
+  # The OpenSSL source is built in src/openssl. Its public headers live in
+  # src/openssl/include/openssl/*.h. When we build the iOS static library we
+  # need those headers available before any source files are compiled. Adding
+  # them as global include directories guarantees they are found regardless of
+  # the order in which targets are created.
+    if(IOS AND NOT USE_SYSTEM_OPENSSL)
+    # Add OpenSSL headers (source and generated) globally so they are visible
+    # to all source files compiled for the iOS static library.
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/openssl/include)
+    include_directories(${CMAKE_CURRENT_BINARY_DIR}/src/openssl/include)
+    # Ensure the static OpenSSL libraries are linked with the final target.
+    # The subdirectory creates targets "ssl" and "crypto"; we add them to the
+    # LINK_LIBS list which is later passed to target_link_libraries.
+    set(LINK_LIBS ${LINK_LIBS} ssl crypto)
+  endif()
+
     if(WIN32)
       set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/src/resources/icons/appicon.rc")
       add_executable(${PROJECT_NAME} WIN32 ${SKYEMU_SRC} ${APP_ICON_RESOURCE_WINDOWS})
