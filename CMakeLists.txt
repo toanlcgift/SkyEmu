@@ -316,8 +316,6 @@ add_definitions(-DGIT_TAG=\"${GIT_TAG}\")
 
 if(NOT RETRO_CORE_ONLY)
   set(SKYEMU_SRC src/main.c src/shared.c src/cloud.cpp src/https.cpp src/stb.c src/miniz.c src/res.c src/localization.c src/mutex.cpp)
-  set(SKYEMU_SRC ${SKYEMU_SRC} src/ios/SkyEmu.m)
-  set(SKYEMU_SRC ${SKYEMU_SRC} src/ios/SEController.m)
   
   if(ENABLE_HTTP_CONTROL_SERVER)
     add_definitions(-DENABLE_HTTP_CONTROL_SERVER=1)
@@ -340,8 +338,6 @@ if(NOT RETRO_CORE_ONLY)
   # ---------------------------------------------------------------------
   # Header search path for iOS source files
   # ---------------------------------------------------------------------
-  # Several Objective‑C source files (e.g., src/ios/SkyEmu.m) include headers
-  # using a relative path like "ios/SkyEmu.h".  Adding the top‑level "src"
   # directory to the include path makes that include resolve correctly for
   # both the executable and the static‑library builds.
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -428,16 +424,38 @@ if(NOT RETRO_CORE_ONLY)
       set_source_files_properties(${APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
       add_executable(${PROJECT_NAME} ${SKYEMU_SRC} ${APP_ICON})
     elseif(IOS)
+      # --------------------------------------------------------------
+      # Option to build the emulator as a static iOS library
+      # --------------------------------------------------------------
+      # --------------------------------------------------------------
+      # Option to build the emulator as a static iOS library (default ON)
+      # --------------------------------------------------------------
+      # --------------------------------------------------------------
+      # Option to build the emulator as a static iOS library (default ON)
+      # --------------------------------------------------------------
+      option(BUILD_IOS_STATIC_LIB "Build SkyEmu as a static iOS library" ON)
+      # --------------------------------------------------------------
+      # Optionally also build a minimal host application that links against
+      # the static library. This is useful for quick testing or for generating
+      # the Xamarin binding library.
+      # --------------------------------------------------------------
+      option(BUILD_IOS_HOST_APP "Build a minimal iOS host app that uses the static library" OFF)
       if(BUILD_IOS_STATIC_LIB)
         # Build a static library for iOS
         add_library(${PROJECT_NAME} STATIC ${SKYEMU_SRC})
-        # Ensure the library is built for the correct architectures
+        # Prevent sokol_app from providing its own entry point
+        target_compile_definitions(${PROJECT_NAME} PRIVATE SOKOL_NO_ENTRY)
+        # Ensure the library is built for the correct architectures and does not require signing
         set_target_properties(${PROJECT_NAME} PROPERTIES
           XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO"
           XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO"
+          XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2"
         )
+        # Install a public header for host apps
+        install(FILES src/skyemu.h DESTINATION include)
+        install(TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib)
       else()
-        # Default: build an iOS application bundle
+        # Default: build an iOS application bundle (unchanged)
         set(MACOSX_BUNDLE_GUI_IDENTIFIER "SkyEmu")
         set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${GIT_COMMIT_HASH})
         set(MACOSX_BUNDLE_LONG_VERSION_STRING ${GIT_COMMIT_HASH})
