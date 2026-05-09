@@ -3548,7 +3548,7 @@ _SOKOL_PRIVATE void _sapp_ios_run(const sapp_desc* desc) {
 
 /* iOS entry function */
 #if !defined(SOKOL_NO_ENTRY)
-int main(int argc, char* argv[]) {
+int main_ios(int argc, char* argv[]) {
     sapp_desc desc = sokol_main(argc, argv);
     _sapp_ios_run(&desc);
     return 0;
