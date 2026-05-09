@@ -32,7 +32,7 @@ option(USE_SYSTEM_SDL2 "Use the system's SDL2 package" OFF)
 option(RETRO_CORE_ONLY "Only build libretro core" OFF)
 
 # Option to build a static iOS library (.a) instead of an iOS application
-option(BUILD_IOS_STATIC_LIB "Build iOS static library" OFF)
+option(BUILD_IOS_STATIC_LIB "Build iOS static library" ON)
 
 if (EMSCRIPTEN)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s ERROR_ON_UNDEFINED_SYMBOLS=0 -s ELIMINATE\_DUPLICATE\_FUNCTIONS=1 -s ENVIRONMENT=web -s ASSERTIONS=0 -s WASM=1 -DSE_PLATFORM_WEB --shell-file ${PROJECT_SOURCE_DIR}/src/shell.html -s USE_CLOSURE_COMPILER=0 ")
