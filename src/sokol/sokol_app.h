@@ -1637,7 +1637,6 @@ typedef struct {
 #if defined(_SAPP_IOS)
 
 @interface _sapp_app_delegate : NSObject
-- (void)handleRemoteKeycodeWithData1:(NSString*)data1 data2:(NSString*)data2;
 @end
 @interface _sapp_textfield_dlg : NSObject<UITextFieldDelegate>
 - (void)keyboardWasShown:(NSNotification*)notif;
@@ -3652,11 +3651,6 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
 }
 
 @implementation _sapp_app_delegate
-- (void)handleRemoteKeycodeWithData1:(NSString*)data1 data2:(NSString*)data2 {
-    _SOKOL_UNUSED(data1);
-    _SOKOL_UNUSED(data2);
-}
-
 + (BOOL)finishedLaunching {
     CGRect screen_rect = UIScreen.mainScreen.bounds;
     _sapp.ios.window = [[UIWindow alloc] initWithFrame:screen_rect];
@@ -3857,9 +3851,13 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
 
 SOKOL_API_IMPL void sapp_ios_remote_keycode_callback(const char *data1, const char* data2) {
     #if defined(_SAPP_IOS)
-        [_sapp.ios.view_ctrl performSelector:@selector(handleRemoteKeycodeWithData1:data2:) 
-                                  withObject:[NSString stringWithUTF8String:data1] 
-                                  withObject:[NSString stringWithUTF8String:data2]];
+        id appDelegate = [UIApplication sharedApplication].delegate;
+        SEL selector = @selector(handleRemoteKeycodeWithData1:data2:);
+        if ([appDelegate respondsToSelector:selector]) {
+            [appDelegate performSelector:selector
+                              withObject:[NSString stringWithUTF8String:data1]
+                              withObject:[NSString stringWithUTF8String:data2]];
+        }
     #else
         _SOKOL_UNUSED(data1);
         _SOKOL_UNUSED(data2);
