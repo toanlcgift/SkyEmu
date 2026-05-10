@@ -7025,6 +7025,9 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
 #ifdef SE_PLATFORM_ANDROID
           se_android_remote_keycode_callback(params[0],params[1]);
 #endif
+#ifdef SE_PLATFORM_IOS
+          se_ios_remote_keycode_callback(params[0], params[1]);
+#endif
           break;
         }
       }

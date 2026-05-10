@@ -1304,6 +1304,9 @@ SOKOL_APP_API_DECL const void* sapp_wgpu_get_depth_stencil_view(void);
 SOKOL_APP_API_DECL const void* sapp_android_get_native_activity(void);
 SOKOL_APP_API_DECL const void* sapp_android_disable_vsync(void);
 
+/* iOS: remote keycode callback for MAUI interoperability */
+SOKOL_APP_API_DECL void sapp_ios_remote_keycode_callback(const char *data1, const char* data2);
+
 #ifdef __cplusplus
 } /* extern "C" */
 
@@ -1634,6 +1637,7 @@ typedef struct {
 #if defined(_SAPP_IOS)
 
 @interface _sapp_app_delegate : NSObject
+- (void)handleRemoteKeycodeWithData1:(NSString*)data1 data2:(NSString*)data2;
 @end
 @interface _sapp_textfield_dlg : NSObject<UITextFieldDelegate>
 - (void)keyboardWasShown:(NSNotification*)notif;
@@ -3648,6 +3652,11 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
 }
 
 @implementation _sapp_app_delegate
+- (void)handleRemoteKeycodeWithData1:(NSString*)data1 data2:(NSString*)data2 {
+    _SOKOL_UNUSED(data1);
+    _SOKOL_UNUSED(data2);
+}
+
 + (BOOL)finishedLaunching {
     CGRect screen_rect = UIScreen.mainScreen.bounds;
     _sapp.ios.window = [[UIWindow alloc] initWithFrame:screen_rect];
@@ -3845,6 +3854,17 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
     _sapp_ios_touch_event(SAPP_EVENTTYPE_TOUCHES_CANCELLED, touches, event);
 }
 @end
+
+SOKOL_API_IMPL void sapp_ios_remote_keycode_callback(const char *data1, const char* data2) {
+    #if defined(_SAPP_IOS)
+        [_sapp.ios.view_ctrl performSelector:@selector(handleRemoteKeycodeWithData1:data2:) 
+                                  withObject:[NSString stringWithUTF8String:data1] 
+                                  withObject:[NSString stringWithUTF8String:data2]];
+    #else
+        _SOKOL_UNUSED(data1);
+        _SOKOL_UNUSED(data2);
+    #endif
+}
 #endif /* TARGET_OS_IPHONE */
 
 #endif /* _SAPP_APPLE */

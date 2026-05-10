@@ -190,3 +190,10 @@ void se_ios_close_modal(){
     }
    }];
 }
+
+void se_ios_remote_keycode_callback(const char *data1, const char* data2){
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+    // Forward the keycode data to sokol_app for processing
+    sapp_ios_remote_keycode_callback(data1, data2);
+   }];
+}

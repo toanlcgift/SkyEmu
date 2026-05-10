@@ -6,4 +6,5 @@ void se_ios_get_safe_ui_padding(float *top, float* bottom,float* left, float *ri
 void se_ios_set_documents_working_directory();
 void se_ios_open_modal(const char* url);
 void se_ios_close_modal();
+void se_ios_remote_keycode_callback(const char *data1, const char* data2);
 #endif
