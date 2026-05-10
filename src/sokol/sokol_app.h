@@ -1633,7 +1633,7 @@ typedef struct {
 /*== IOS DECLARATIONS ========================================================*/
 #if defined(_SAPP_IOS)
 
-@interface _sapp_app_delegate : NSObject<UIApplicationDelegate>
+@interface _sapp_app_delegate : NSObject
 @end
 @interface _sapp_textfield_dlg : NSObject<UITextFieldDelegate>
 - (void)keyboardWasShown:(NSNotification*)notif;
@@ -3543,7 +3543,7 @@ _SOKOL_PRIVATE void _sapp_ios_run(const sapp_desc* desc) {
     _sapp_init_state(desc);
     static int argc = 1;
     static char* argv[] = { (char*)"sokol_app" };
-    UIApplicationMain(argc, argv, nil, NSStringFromClass([_sapp_app_delegate class]));
+    UIApplicationMain(argc, argv, nil, @"AppDelegate");
 }
 
 /* iOS entry function */
@@ -3648,7 +3648,7 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
 }
 
 @implementation _sapp_app_delegate
-- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
++ (BOOL)finishedLaunching {
     CGRect screen_rect = UIScreen.mainScreen.bounds;
     _sapp.ios.window = [[UIWindow alloc] initWithFrame:screen_rect];
     _sapp.window_width = screen_rect.size.width;
@@ -3718,6 +3718,10 @@ _SOKOL_PRIVATE void _sapp_ios_show_keyboard(bool shown) {
 
     _sapp.valid = true;
     return YES;
+}
+
++(MTKView*)getGameView{
+    return _sapp.ios.view;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
