@@ -2617,6 +2617,15 @@ void se_load_rom(const char *filename){
   gui_state.ra_needs_reload=true;
   #endif
 }
+void se_show_ui() {
+    show_ui = true;
+}
+void se_hide_ui() {
+    show_ui = false;
+}
+void se_stretch_to_fit(int fit) {
+    gui_state.settings.stretch_to_fit = fit;
+}
 static void se_reset_core(){
   if(emu_state.rom_loaded==false)return; 
   se_load_rom(gui_state.recently_loaded_games[0].path);
