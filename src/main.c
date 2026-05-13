@@ -49,6 +49,8 @@
 #include "stb_image.h"
 #include "stb_image_write.h"
 
+#include "skyemu_dll.h"
+
 #ifdef USE_TINY_FILE_DIALOGS
 #include "tinyfiledialogs.h"
 #endif
@@ -2443,7 +2445,7 @@ void se_load_rom_from_emu_state(sb_emu_state_t*emu){
 
 const char* html_content;
 
-void se_load_html(const char *filename){
+SKYEMU_API void se_load_html(const char *filename){
     size_t data_size=0;
     uint8_t*data = sb_load_file_data(filename,&data_size);
     if(!data_size){
@@ -2469,7 +2471,7 @@ void se_load_html(const char *filename){
 
     free(data);
 }
-void se_load_rom(const char *filename){
+SKYEMU_API void se_load_rom(const char *filename){
   se_reset_rewind_buffer(&rewind_buffer);
   se_reset_save_states();
   se_reset_cheats();
@@ -2617,13 +2619,13 @@ void se_load_rom(const char *filename){
   gui_state.ra_needs_reload=true;
   #endif
 }
-void se_show_ui() {
+SKYEMU_API void se_show_ui() {
     show_ui = true;
 }
-void se_hide_ui() {
+SKYEMU_API void se_hide_ui() {
     show_ui = false;
 }
-void se_stretch_to_fit(int fit) {
+SKYEMU_API void se_stretch_to_fit(int fit) {
     gui_state.settings.stretch_to_fit = fit;
 }
 static void se_reset_core(){
@@ -9132,6 +9134,7 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slo
 
 #endif
 
+#ifndef SE_PLATFORM_WINDOWS_DLL
 sapp_desc sokol_main(int argc, char* argv[]) {
   emu_state.cmd_line_arg_count =argc;
   emu_state.cmd_line_args =argv;
@@ -9185,3 +9188,4 @@ sapp_desc sokol_main(int argc, char* argv[]) {
       .ios_keyboard_resizes_canvas=true
   };
 }
+#endif /* SE_PLATFORM_WINDOWS_DLL */
