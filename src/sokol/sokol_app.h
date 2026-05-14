@@ -906,7 +906,7 @@
 #define SOKOL_APP_API_DECL SOKOL_API_DECL
 #endif
 #ifndef SOKOL_APP_API_DECL
-#if defined(_WIN32) && defined(SOKOL_DLL) && defined(SOKOL_APP_IMPL)
+#if defined(_WIN32)
 #define SOKOL_APP_API_DECL __declspec(dllexport)
 #elif defined(_WIN32) && defined(SOKOL_DLL)
 #define SOKOL_APP_API_DECL __declspec(dllimport)
@@ -6402,53 +6402,6 @@ _SOKOL_PRIVATE void _sapp_win32_run(const sapp_desc* desc) {
         #endif
     #endif
     _sapp.valid = true;
-
-    bool done = false;
-    while (!(done || _sapp.quit_ordered)) {
-        MSG msg;
-        while (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE)) {
-            if (WM_QUIT == msg.message) {
-                done = true;
-                continue;
-            }
-            else {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
-        }
-        _sapp_frame();
-        #if defined(SOKOL_D3D11)
-            _sapp_d3d11_present();
-            if (IsIconic(_sapp.win32.hwnd)) {
-                Sleep((DWORD)(16 * _sapp.swap_interval));
-            }
-        #endif
-        #if defined(SOKOL_GLCORE33)
-            _sapp_wgl_swap_buffers();
-        #endif
-        /* check for window resized, this cannot happen in WM_SIZE as it explodes memory usage */
-        if (_sapp_win32_update_dimensions()) {
-            #if defined(SOKOL_D3D11)
-            _sapp_d3d11_resize_default_render_target();
-            #endif
-            _sapp_win32_uwp_app_event(SAPP_EVENTTYPE_RESIZED);
-        }
-        if (_sapp.quit_requested) {
-            PostMessage(_sapp.win32.hwnd, WM_CLOSE, 0, 0);
-        }
-    }
-    _sapp_call_cleanup();
-
-    #if defined(SOKOL_D3D11)
-        _sapp_d3d11_destroy_default_render_target();
-        _sapp_d3d11_destroy_device_and_swapchain();
-    #else
-        _sapp_wgl_destroy_context();
-        _sapp_wgl_shutdown();
-    #endif
-    _sapp_win32_destroy_window();
-    _sapp_win32_restore_console();
-    _sapp_discard_state();
 }
 
 _SOKOL_PRIVATE char** _sapp_win32_command_line_to_utf8_argv(LPWSTR w_command_line, int* o_argc) {
@@ -6481,28 +6434,11 @@ _SOKOL_PRIVATE char** _sapp_win32_command_line_to_utf8_argv(LPWSTR w_command_lin
     return argv;
 }
 
-#if !defined(SOKOL_NO_ENTRY)
-#if defined(SOKOL_WIN32_FORCE_MAIN)
-int main(int argc, char* argv[]) {
+SOKOL_APP_API_DECL main(int argc, char* argv[]) {
     sapp_desc desc = sokol_main(argc, argv);
     _sapp_win32_run(&desc);
     return 0;
 }
-#else
-int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow) {
-    _SOKOL_UNUSED(hInstance);
-    _SOKOL_UNUSED(hPrevInstance);
-    _SOKOL_UNUSED(lpCmdLine);
-    _SOKOL_UNUSED(nCmdShow);
-    int argc_utf8 = 0;
-    char** argv_utf8 = _sapp_win32_command_line_to_utf8_argv(GetCommandLineW(), &argc_utf8);
-    sapp_desc desc = sokol_main(argc_utf8, argv_utf8);
-    _sapp_win32_run(&desc);
-    SOKOL_FREE(argv_utf8);
-    return 0;
-}
-#endif /* SOKOL_WIN32_FORCE_MAIN */
-#endif /* SOKOL_NO_ENTRY */
 
 #ifdef _MSC_VER
     #pragma warning(pop)
