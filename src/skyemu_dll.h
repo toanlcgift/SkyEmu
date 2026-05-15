@@ -47,6 +47,8 @@ SKYEMU_API void se_hide_ui(void);
 /* Set stretch-to-fit mode: 0 = off, 1 = on */
 SKYEMU_API void se_stretch_to_fit(int fit);
 
+SKYEMU_API int win_main(int argc, char* argv[]);
+
 #ifdef __cplusplus
 }
 #endif

@@ -6381,7 +6381,7 @@ _SOKOL_PRIVATE bool _sapp_win32_is_win10_or_greater(void) {
     }
 }
 
-_SOKOL_PRIVATE void _sapp_win32_run(const sapp_desc* desc) {
+SOKOL_APP_API_DECL void _sapp_win32_run(const sapp_desc* desc) {
     _sapp_init_state(desc);
     _sapp_win32_init_console();
     _sapp.win32.is_win10_or_greater = _sapp_win32_is_win10_or_greater();
@@ -6402,7 +6402,55 @@ _SOKOL_PRIVATE void _sapp_win32_run(const sapp_desc* desc) {
         #endif
     #endif
     _sapp.valid = true;
+
+    bool done = false;
+    while (!(done || _sapp.quit_ordered)) {
+        MSG msg;
+        while (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE)) {
+            if (WM_QUIT == msg.message) {
+                done = true;
+                continue;
+            }
+            else {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        _sapp_frame();
+#if defined(SOKOL_D3D11)
+        _sapp_d3d11_present();
+        if (IsIconic(_sapp.win32.hwnd)) {
+            Sleep((DWORD)(16 * _sapp.swap_interval));
+        }
+#endif
+#if defined(SOKOL_GLCORE33)
+        _sapp_wgl_swap_buffers();
+#endif
+        /* check for window resized, this cannot happen in WM_SIZE as it explodes memory usage */
+        if (_sapp_win32_update_dimensions()) {
+#if defined(SOKOL_D3D11)
+            _sapp_d3d11_resize_default_render_target();
+#endif
+            _sapp_win32_uwp_app_event(SAPP_EVENTTYPE_RESIZED);
+        }
+        if (_sapp.quit_requested) {
+            PostMessage(_sapp.win32.hwnd, WM_CLOSE, 0, 0);
+        }
+    }
+    _sapp_call_cleanup();
+
+#if defined(SOKOL_D3D11)
+    _sapp_d3d11_destroy_default_render_target();
+    _sapp_d3d11_destroy_device_and_swapchain();
+#else
+    _sapp_wgl_destroy_context();
+    _sapp_wgl_shutdown();
+#endif
+    _sapp_win32_destroy_window();
+    _sapp_win32_restore_console();
+    _sapp_discard_state();
 }
+
 
 _SOKOL_PRIVATE char** _sapp_win32_command_line_to_utf8_argv(LPWSTR w_command_line, int* o_argc) {
     int argc = 0;

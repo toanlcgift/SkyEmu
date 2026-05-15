@@ -9134,8 +9134,8 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slo
 
 #endif
 
-#ifndef SE_PLATFORM_WINDOWS_DLL
-sapp_desc sokol_main(int argc, char* argv[]) {
+#ifdef SE_PLATFORM_WINDOWS_DLL
+sapp_desc sokol_c_main(int argc, char* argv[]) {
   emu_state.cmd_line_arg_count =argc;
   emu_state.cmd_line_args =argv;
   int width = 1280;
@@ -9187,5 +9187,13 @@ sapp_desc sokol_main(int argc, char* argv[]) {
       .swap_interval=0,
       .ios_keyboard_resizes_canvas=true
   };
+}
+#endif /* SE_PLATFORM_WINDOWS_DLL */
+
+#ifdef SE_PLATFORM_WINDOWS_DLL
+SKYEMU_API int win_main(int argc, char* argv[]) {
+    sapp_desc desc = sokol_c_main(argc, argv);
+    _sapp_win32_run(&desc);
+    return 0;
 }
 #endif /* SE_PLATFORM_WINDOWS_DLL */
