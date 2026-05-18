@@ -5338,10 +5338,7 @@ _SOKOL_PRIVATE void _sapp_d3d11_create_device_and_swapchain(void) {
     sc_desc->SampleDesc.Count = 1;
     sc_desc->SampleDesc.Quality = 0;
     sc_desc->BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    UINT create_flags = D3D11_CREATE_DEVICE_SINGLETHREADED | D3D11_CREATE_DEVICE_BGRA_SUPPORT;
-    #if defined(SOKOL_DEBUG)
-        create_flags |= D3D11_CREATE_DEVICE_DEBUG;
-    #endif
+    UINT create_flags = 0;
     D3D_FEATURE_LEVEL feature_level;
     HRESULT hr = D3D11CreateDeviceAndSwapChain(
         NULL,                           /* pAdapter (use default) */
