@@ -6928,7 +6928,7 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
 #ifdef SE_PLATFORM_ANDROID
       se_android_ping();
 #endif
-#ifdef SE_PLATFORM_IOS
+#if defined(SE_PLATFORM_IOS) || defined(SE_PLATFORM_MACOS)
       se_ios_ping();
 #endif
 #ifdef SE_PLATFORM_WINDOWS_DLL
@@ -6949,7 +6949,7 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
 #ifdef SE_PLATFORM_ANDROID
       se_android_open_external_menu();
 #endif
-#ifdef SE_PLATFORM_IOS
+#if defined(SE_PLATFORM_IOS) || defined(SE_PLATFORM_MACOS)
       se_ios_open_external_menu();
 #endif
 #ifdef SE_PLATFORM_WINDOWS_DLL
@@ -7199,7 +7199,7 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
 #ifdef SE_PLATFORM_ANDROID
           se_android_remote_keycode_callback(params[0],params[1]);
 #endif
-#ifdef SE_PLATFORM_IOS
+#if defined(SE_PLATFORM_IOS) || defined(SE_PLATFORM_MACOS)
           se_ios_remote_keycode_callback(params[0], params[1]);
 #endif
 #ifdef SE_PLATFORM_WINDOWS_DLL
