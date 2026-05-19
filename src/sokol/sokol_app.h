@@ -6190,7 +6190,7 @@ _SOKOL_PRIVATE void _sapp_win32_create_window(void) {
         NULL,                       /* hMenu */
         GetModuleHandle(NULL),      /* hInstance */
         NULL);                      /* lParam */
-    ShowWindow(_sapp.win32.hwnd, SW_SHOW);
+    //ShowWindow(_sapp.win32.hwnd, SW_SHOW);
     _sapp.win32.in_create_window = false;
     _sapp.win32.dc = GetDC(_sapp.win32.hwnd);
     SOKOL_ASSERT(_sapp.win32.dc);

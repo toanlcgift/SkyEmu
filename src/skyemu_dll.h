@@ -1,6 +1,9 @@
 #ifndef SKYEMU_DLL_H
 #define SKYEMU_DLL_H
 
+#include <stdint.h>
+#include <stdbool.h>
+
 /*
  * SkyEmu DLL API header
  *
@@ -47,6 +50,52 @@ SKYEMU_API void se_hide_ui(void);
 
 /* Set stretch-to-fit mode: 0 = off, 1 = on */
 SKYEMU_API void se_stretch_to_fit(int fit);
+
+/*
+ * SkyEmu Framebuffer Interface
+ * 
+ * The framebuffer is in BGRA format (4 bytes per pixel).
+ */
+
+/* System types matching SkyEmu's internal definitions */
+#define SE_SYSTEM_NONE  0
+#define SE_SYSTEM_GB    1
+#define SE_SYSTEM_GBA   2
+#define SE_SYSTEM_NDS   3
+
+/* Screen dimensions */
+#define SE_GBA_LCD_W    240
+#define SE_GBA_LCD_H    160
+
+#define SE_NDS_LCD_W    256
+#define SE_NDS_LCD_H    192
+
+#define SE_GB_LCD_W     160
+#define SE_GB_LCD_H     144
+
+/* Maximum framebuffer size (NDS top + bottom) */
+#define SE_MAX_FRAMEBUFFER_SIZE (SE_NDS_LCD_W * SE_NDS_LCD_H * 4 * 2)
+
+/* Get the currently emulated system */
+SKYEMU_API int se_get_system(void);
+
+/* Get the framebuffer dimensions */
+SKYEMU_API void se_get_framebuffer_dimensions(int* width, int* height);
+
+/* Get the number of framebuffers for the current system */
+SKYEMU_API int se_get_framebuffer_count(void);
+
+/* Get a pointer to the framebuffer data (BGRA format) */
+SKYEMU_API const uint8_t* se_get_framebuffer(int screen_index);
+
+/* Copy the framebuffer to a caller-provided buffer */
+SKYEMU_API int se_copy_framebuffer(uint8_t* buffer, int buffer_size);
+
+/* Check if a frame is ready */
+SKYEMU_API bool se_is_frame_ready(void);
+
+/* Get the framebuffer as a contiguous buffer */
+SKYEMU_API const uint8_t* se_get_screenshot(int* out_width, int* out_height);
 
 #ifdef SE_PLATFORM_WINDOWS_DLL
 SKYEMU_API int win_main(int argc, char* argv[]);

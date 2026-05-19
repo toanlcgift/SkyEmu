@@ -2808,6 +2808,127 @@ static void se_screenshot(uint8_t * output_buffer, int * out_width, int * out_he
   }
   for(int i=3;i<SE_MAX_SCREENSHOT_SIZE;i+=4)output_buffer[i]=0xff;
 }
+
+/*
+ * SkyEmu Framebuffer Interface for C# / External Applications
+ * See skyemu_dll.h for documentation
+ */
+
+int se_get_system(void) {
+    switch (emu_state.system) {
+        case SYSTEM_GB:  return SE_SYSTEM_GB;
+        case SYSTEM_GBA: return SE_SYSTEM_GBA;
+        case SYSTEM_NDS: return SE_SYSTEM_NDS;
+        default:         return SE_SYSTEM_NONE;
+    }
+}
+
+void se_get_framebuffer_dimensions(int* width, int* height) {
+    if (!width || !height) return;
+    
+    *width = 0;
+    *height = 0;
+    
+    switch (emu_state.system) {
+        case SYSTEM_GBA:
+            *width = GBA_LCD_W;
+            *height = GBA_LCD_H;
+            break;
+        case SYSTEM_NDS:
+            *width = NDS_LCD_W;
+            *height = NDS_LCD_H;
+            break;
+        case SYSTEM_GB:
+            *width = SB_LCD_W;
+            *height = SB_LCD_H;
+            break;
+    }
+}
+
+int se_get_framebuffer_count(void) {
+    switch (emu_state.system) {
+        case SYSTEM_NDS: return 2;
+        case SYSTEM_GBA:
+        case SYSTEM_GB:
+            return 1;
+        default:
+            return 0;
+    }
+}
+
+const uint8_t* se_get_framebuffer(int screen_index) {
+    switch (emu_state.system) {
+        case SYSTEM_GBA:
+            if (screen_index == 0) {
+                return scratch.gba.framebuffer;
+            }
+            break;
+        case SYSTEM_NDS:
+            if (screen_index == 0) {
+                return scratch.nds.framebuffer_top;
+            } else if (screen_index == 1) {
+                return scratch.nds.framebuffer_bottom;
+            }
+            break;
+        case SYSTEM_GB:
+            if (screen_index == 0) {
+                return scratch.gb.framebuffer;
+            }
+            break;
+    }
+    return NULL;
+}
+
+int se_copy_framebuffer(uint8_t* buffer, int buffer_size) {
+    if (!buffer || buffer_size < 0) return -1;
+    
+    int width, height;
+    se_get_framebuffer_dimensions(&width, &height);
+    int fb_count = se_get_framebuffer_count();
+    int required_size = width * height * 4 * fb_count;
+    
+    if (buffer_size < required_size) return -1;
+    
+    switch (emu_state.system) {
+        case SYSTEM_GBA:
+            memcpy(buffer, scratch.gba.framebuffer, GBA_LCD_W * GBA_LCD_H * 4);
+            return GBA_LCD_W * GBA_LCD_H * 4;
+            
+        case SYSTEM_NDS:
+            memcpy(buffer, scratch.nds.framebuffer_top, NDS_LCD_W * NDS_LCD_H * 4);
+            memcpy(buffer + NDS_LCD_W * NDS_LCD_H * 4, 
+                   scratch.nds.framebuffer_bottom, 
+                   NDS_LCD_W * NDS_LCD_H * 4);
+            return NDS_LCD_W * NDS_LCD_H * 4 * 2;
+            
+        case SYSTEM_GB:
+            memcpy(buffer, scratch.gb.framebuffer, SB_LCD_W * SB_LCD_H * 4);
+            return SB_LCD_W * SB_LCD_H * 4;
+    }
+    
+    return -1;
+}
+
+bool se_is_frame_ready(void) {
+    // Frame ready tracking would need to be added to the main loop
+    // For now, always return true when a system is loaded
+    return emu_state.system != SYSTEM_NONE;
+}
+
+const uint8_t* se_get_screenshot(int* out_width, int* out_height) {
+    static uint8_t screenshot_buffer[SE_MAX_SCREENSHOT_SIZE];
+    
+    if (!out_width || !out_height) return NULL;
+    
+    se_screenshot(screenshot_buffer, out_width, out_height);
+    
+    if (*out_width > 0 && *out_height > 0) {
+        return screenshot_buffer;
+    }
+    
+    return NULL;
+}
+
 typedef struct{
   uint8_t *data;
   int im_width; 
