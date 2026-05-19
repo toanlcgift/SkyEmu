@@ -93,6 +93,7 @@ bool show_ui = true;
 #ifdef SE_PLATFORM_WINDOWS_DLL
 static RemoteKeycodeCallback se_win_remote_keycode_callback = NULL;
 static PingCallback se_win_ping_callback = NULL;
+static ExternalMenuCallback se_win_external_menu_callback = NULL;
 
 SKYEMU_API void set_remote_keycode_callback(RemoteKeycodeCallback callback) {
     se_win_remote_keycode_callback = callback;
@@ -102,9 +103,19 @@ SKYEMU_API void set_ping_callback(PingCallback callback) {
     se_win_ping_callback = callback;
 }
 
+SKYEMU_API void set_external_menu_callback(ExternalMenuCallback callback) {
+    se_win_external_menu_callback = callback;
+}
+
 static void se_windows_ping() {
     if (se_win_ping_callback) {
         se_win_ping_callback();
+    }
+}
+
+static void se_windows_open_external_menu() {
+    if (se_win_external_menu_callback) {
+        se_win_external_menu_callback();
     }
 }
 #endif
@@ -6937,6 +6948,12 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
   else if(strcmp(cmd, "/external_menu") == 0) {
 #ifdef SE_PLATFORM_ANDROID
       se_android_open_external_menu();
+#endif
+#ifdef SE_PLATFORM_IOS
+      se_ios_open_external_menu();
+#endif
+#ifdef SE_PLATFORM_WINDOWS_DLL
+      se_windows_open_external_menu();
 #endif
   }
   else if (strcmp(cmd, "/x1") == 0) {

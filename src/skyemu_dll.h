@@ -24,6 +24,7 @@
 #if defined(SE_PLATFORM_WINDOWS_DLL)
 typedef void(__stdcall* RemoteKeycodeCallback)(const char* data1, const char* data2);
 typedef void(__stdcall* PingCallback)(void);
+typedef void(__stdcall* ExternalMenuCallback)(void);
   #if defined(SKYEMU_DLL_EXPORTS)
     #define SKYEMU_API __declspec(dllexport)
   #else
@@ -104,6 +105,7 @@ SKYEMU_API int win_main(int argc, char* argv[]);
     // 2. Export a function that takes the callback
 SKYEMU_API void set_remote_keycode_callback(RemoteKeycodeCallback callback);
 SKYEMU_API void set_ping_callback(PingCallback callback);
+SKYEMU_API void set_external_menu_callback(ExternalMenuCallback callback);
 #endif
 
 #ifdef __cplusplus

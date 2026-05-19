@@ -203,3 +203,9 @@ void se_ios_ping() {
     sapp_ios_ping_callback();
   }];
 }
+
+void se_ios_open_external_menu() {
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    sapp_ios_open_external_menu_callback();
+  }];
+}
