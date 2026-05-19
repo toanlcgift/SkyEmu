@@ -7,4 +7,5 @@ void se_ios_set_documents_working_directory();
 void se_ios_open_modal(const char* url);
 void se_ios_close_modal();
 void se_ios_remote_keycode_callback(const char *data1, const char* data2);
+void se_ios_ping();
 #endif

@@ -92,9 +92,20 @@ bool show_ui = true;
 
 #ifdef SE_PLATFORM_WINDOWS_DLL
 static RemoteKeycodeCallback se_win_remote_keycode_callback = NULL;
+static PingCallback se_win_ping_callback = NULL;
 
 SKYEMU_API void set_remote_keycode_callback(RemoteKeycodeCallback callback) {
     se_win_remote_keycode_callback = callback;
+}
+
+SKYEMU_API void set_ping_callback(PingCallback callback) {
+    se_win_ping_callback = callback;
+}
+
+static void se_windows_ping() {
+    if (se_win_ping_callback) {
+        se_win_ping_callback();
+    }
 }
 #endif
 
@@ -6905,6 +6916,12 @@ uint8_t* se_hcs_callback(const char* cmd, const char** params, uint64_t* result_
       str_result = "pong"; 
 #ifdef SE_PLATFORM_ANDROID
       se_android_ping();
+#endif
+#ifdef SE_PLATFORM_IOS
+      se_ios_ping();
+#endif
+#ifdef SE_PLATFORM_WINDOWS_DLL
+      se_windows_ping();
 #endif
   }
   else if(strcmp(cmd,"/load_rom")==0){

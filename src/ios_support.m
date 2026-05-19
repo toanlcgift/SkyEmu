@@ -197,3 +197,9 @@ void se_ios_remote_keycode_callback(const char *data1, const char* data2){
     sapp_ios_remote_keycode_callback(data1, data2);
    }];
 }
+
+void se_ios_ping() {
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    sapp_ios_ping_callback();
+  }];
+}

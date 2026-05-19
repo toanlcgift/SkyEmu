@@ -1307,6 +1307,9 @@ SOKOL_APP_API_DECL const void* sapp_android_disable_vsync(void);
 /* iOS: remote keycode callback for MAUI interoperability */
 SOKOL_APP_API_DECL void sapp_ios_remote_keycode_callback(const char *data1, const char* data2);
 
+/* iOS: ping callback for MAUI interoperability */
+SOKOL_APP_API_DECL void sapp_ios_ping_callback(void);
+
 #ifdef __cplusplus
 } /* extern "C" */
 
@@ -3861,6 +3864,16 @@ SOKOL_API_IMPL void sapp_ios_remote_keycode_callback(const char *data1, const ch
     #else
         _SOKOL_UNUSED(data1);
         _SOKOL_UNUSED(data2);
+    #endif
+}
+
+SOKOL_API_IMPL void sapp_ios_ping_callback(void) {
+    #if defined(_SAPP_IOS)
+        id appDelegate = [UIApplication sharedApplication].delegate;
+        SEL selector = @selector(handlePing);
+        if ([appDelegate respondsToSelector:selector]) {
+            [appDelegate performSelector:selector];
+        }
     #endif
 }
 #endif /* TARGET_OS_IPHONE */
