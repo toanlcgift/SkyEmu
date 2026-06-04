@@ -80,6 +80,9 @@ if(IOS)
     set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "15.0" CACHE STRING "Minimum iOS deployment version" FORCE)
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO" FORCE)
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO" FORCE)
+    # Mac Catalyst support
+    set(CMAKE_XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst" CACHE STRING "Supported platforms" FORCE)
+    set(CMAKE_XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum macOS deployment version for Mac Catalyst" FORCE)
 endif()
 if(WIN32)
   message("Building for Windows")
@@ -146,6 +149,11 @@ if(NOT RETRO_CORE_ONLY)
       else()
         set_property(TARGET libcurl_static PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
       endif()
+      # Mac Catalyst support for libcurl_static
+      set_target_properties(libcurl_static PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
     endif()
   
     if(USE_SYSTEM_OPENSSL)
@@ -161,6 +169,15 @@ if(NOT RETRO_CORE_ONLY)
         set_property(TARGET ssl PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
         set_property(TARGET crypto PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
       endif()
+      # Mac Catalyst support for SSL and crypto
+      set_target_properties(ssl PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
+      set_target_properties(crypto PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
     endif()
   endif()
   
@@ -175,6 +192,11 @@ if(NOT RETRO_CORE_ONLY)
       target_include_directories(tinyfd INTERFACE src/tinyfiledialogs)
       set(LINK_LIBS ${LINK_LIBS} tinyfd)
       set_property(TARGET tinyfd PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+      # Mac Catalyst support for tinyfd
+      set_target_properties(tinyfd PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
   endif()
   
   if(NOT EMSCRIPTEN)
@@ -194,6 +216,11 @@ if(NOT RETRO_CORE_ONLY)
       )
   set_property(TARGET cimgui PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
   target_include_directories(cimgui INTERFACE src/cimgui)
+  # Mac Catalyst support for cimgui
+  set_target_properties(cimgui PROPERTIES
+      XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+      XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+  )
 
   if(USE_SDL)
     if (USE_SYSTEM_SDL2)
@@ -223,6 +250,11 @@ if(NOT RETRO_CORE_ONLY)
       add_definitions(-DSDL_LEAN_AND_MEAN=1)
       add_subdirectory(src/SDL2)
       set_property(TARGET SDL2-static PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+      # Mac Catalyst support for SDL2
+      set_target_properties(SDL2-static PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
     endif()
   endif()
   
@@ -289,6 +321,11 @@ if(NOT RETRO_CORE_ONLY)
   endif()
   target_link_libraries(sokol PUBLIC cimgui)
   target_include_directories(sokol INTERFACE src/sokol)
+  # Mac Catalyst support for sokol
+  set_target_properties(sokol PROPERTIES
+      XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+      XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+  )
 endif()
 find_package(Git)
 
@@ -371,6 +408,11 @@ if(NOT RETRO_CORE_ONLY)
       target_compile_definitions(Lua PRIVATE LUA_USE_IOS) # makes it so system is not used
     endif()
     set_property(TARGET Lua PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    # Mac Catalyst support for Lua
+    set_target_properties(Lua PROPERTIES
+        XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+        XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+    )
     set(LINK_LIBS ${LINK_LIBS} Lua)
     set(RCHEEVOS_SRC src/rcheevos/src/rapi/rc_api_common.c
       src/rcheevos/src/rapi/rc_api_editor.c
@@ -447,6 +489,11 @@ if(NOT RETRO_CORE_ONLY)
             set(APP_ICON src/resources/icons/AppIcon.icns)
             set_source_files_properties(${APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
             add_executable(${PROJECT_NAME} ${SKYEMU_SRC} ${APP_ICON})
+            # Mac Catalyst support
+            set_target_properties(${PROJECT_NAME} PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+            )
       endif()
     elseif(IOS)
       if(BUILD_IOS_STATIC_LIB)
@@ -482,6 +529,11 @@ endif()
 
 add_library(skyemu_libretro SHARED EXCLUDE_FROM_ALL src/libretro.c src/shared.c src/localization.c)
 set_target_properties(skyemu_libretro PROPERTIES PREFIX "")
+# Mac Catalyst support for skyemu_libretro
+set_target_properties(skyemu_libretro PROPERTIES
+  XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+  XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+)
 if (MACOS OR IOS)
     find_library(FoundationLib CoreFoundation)
     target_link_libraries(skyemu_libretro ${FoundationLib})
@@ -521,6 +573,11 @@ if(NOT RETRO_CORE_ONLY)
   set(CAPSTONE_BUILD_STATIC_RUNTIME OFF CACHE BOOL "Capstone static runtime" FORCE)
   add_subdirectory(src/capstone EXCLUDE_FROM_ALL)
   set_property(TARGET capstone-static PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+  # Mac Catalyst support for capstone-static
+  set_target_properties(capstone-static PROPERTIES
+      XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+      XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+  )
 
   set(LINK_LIBS ${LINK_LIBS} capstone-static ${ALSA_LIBRARIES})
   if(USE_SDL)
@@ -578,6 +635,66 @@ if(NOT RETRO_CORE_ONLY)
           MACOSX_BUNDLE ON
           MACOSX_BUNDLE_BUNDLE_NAME ${PROJECT_NAME}
           MACOSX_BUNDLE_BUNDLE_IDENTIFIER "com.sky.${PROJECT_NAME}")
+      # Mac Catalyst support
+      set_target_properties(${PROJECT_NAME} PROPERTIES
+          XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+          XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+      )
+      # Mac Catalyst support for all dependencies
+      if(TARGET capstone-static)
+          set_target_properties(capstone-static PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET cimgui)
+          set_target_properties(cimgui PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET crypto)
+          set_target_properties(crypto PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET libcurl_static)
+          set_target_properties(libcurl_static PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET Lua)
+          set_target_properties(Lua PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET SDL2-static)
+          set_target_properties(SDL2-static PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET sokol)
+          set_target_properties(sokol PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET ssl)
+          set_target_properties(ssl PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
+      if(TARGET tinyfd)
+          set_target_properties(tinyfd PROPERTIES
+              XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
+              XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+          )
+      endif()
   elseif(EMSCRIPTEN)
       add_custom_command(
           TARGET ${PROJECT_NAME} POST_BUILD
