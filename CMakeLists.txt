@@ -29,6 +29,7 @@ option(ENABLE_RETRO_ACHIEVEMENTS "Enable Retro Achievements" ON)
 option(USE_SYSTEM_CURL "Use the system's libcurl package" OFF)
 option(USE_SYSTEM_OPENSSL "Use the system's OpenSSL package" OFF)
 option(USE_SYSTEM_SDL2 "Use the system's SDL2 package" OFF)
+option(USE_SDL "Use SDL2 for input/audio" ON)
 option(RETRO_CORE_ONLY "Only build libretro core" OFF)
 
 # Option to build a static iOS library (.a) instead of an iOS application
@@ -63,8 +64,7 @@ if (MSVC)
 
 endif()
 
-if(NOT ANDROID)
-    set(USE_SDL 1)
+if(NOT ANDROID AND USE_SDL)
     add_definitions(-DUSE_SDL=1)
 endif()
 
@@ -250,6 +250,11 @@ if(NOT RETRO_CORE_ONLY)
       add_library(sokol STATIC src/sokol/sokol.m ${SOKOL_HEADERS})
       if(MACOS AND (NOT IOS))
           add_definitions(-DSE_PLATFORM_MACOS)
+          if(NOT USE_SDL)
+              add_definitions(-DSOKOL_METAL=1)
+          else()
+              add_definitions(-DSOKOL_GLCORE33=1)
+          endif()
           target_link_libraries(sokol PUBLIC
               "-framework QuartzCore"
               "-framework Cocoa"
