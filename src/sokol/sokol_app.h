@@ -1356,7 +1356,7 @@ inline void sapp_run(const sapp_desc& desc) { return sapp_run(&desc); }
         #endif
     #elif defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST
         /* MacOS Catalyst */
-        #define _SAPP_MACOS (1)
+        #define _SAPP_IOS (1)
         #if !defined(SOKOL_METAL) && !defined(SOKOL_GLCORE33)
         #error("sokol_app.h: unknown 3D API selected for MacOS Catalyst, must be SOKOL_METAL or SOKOL_GLCORE33")
         #endif
