@@ -1354,6 +1354,12 @@ inline void sapp_run(const sapp_desc& desc) { return sapp_run(&desc); }
         #if !defined(SOKOL_METAL) && !defined(SOKOL_GLCORE33)
         #error("sokol_app.h: unknown 3D API selected for MacOS, must be SOKOL_METAL or SOKOL_GLCORE33")
         #endif
+    #elif defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST
+        /* MacOS Catalyst */
+        #define _SAPP_MACOS (1)
+        #if !defined(SOKOL_METAL) && !defined(SOKOL_GLCORE33)
+        #error("sokol_app.h: unknown 3D API selected for MacOS Catalyst, must be SOKOL_METAL or SOKOL_GLCORE33")
+        #endif
     #else
         /* iOS or iOS Simulator */
         #define _SAPP_IOS (1)
