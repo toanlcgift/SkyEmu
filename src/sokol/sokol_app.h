@@ -10550,7 +10550,7 @@ int main(int argc, char* argv[]) {
 #endif /* _SAPP_LINUX */
 
 /*== PUBLIC API FUNCTIONS ====================================================*/
-#if defined(SOKOL_NO_ENTRY)
+#if defined(SOKOL_NO_ENTRY) || defined(_SAPP_IOS)
 SOKOL_API_IMPL void sapp_run(const sapp_desc* desc) {
     SOKOL_ASSERT(desc);
     #if defined(_SAPP_MACOS)

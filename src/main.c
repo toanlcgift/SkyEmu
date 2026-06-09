@@ -65,6 +65,9 @@
 #ifdef SE_PLATFORM_IOS
 #include "ios_support.h"
 #endif
+#ifdef TARGET_OS_MACCATALYST
+#include "ios_support.h"
+#endif
 #ifdef USE_SDL
 #include "SDL.h"
 #endif 
@@ -6040,7 +6043,9 @@ void se_draw_controller_config(gui_state_t* gui){
   bool modified = se_handle_keybind_settings(SE_BIND_KEY,&(cont->key));
   modified |= se_handle_keybind_settings(SE_BIND_ANALOG,&(cont->analog));
   if(se_button("Reset Default Controller Bindings",(ImVec2){0,0})){
-    se_set_default_controller_binds(cont);
+#ifndef _SAPP_IOS
+      se_set_default_controller_binds(cont);
+#endif // _SAPP_IOS
     modified=true;
   }
   if(modified){
