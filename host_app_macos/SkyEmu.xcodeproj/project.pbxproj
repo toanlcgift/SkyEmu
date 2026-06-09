@@ -617,6 +617,7 @@
 		95B727E52C8C4D53B95A0582 /* m_md5.c in Sources */ = {isa = PBXBuildFile; fileRef = D3CF80FC75B048C6BC303A78 /* m_md5.c */; };
 		95E1238450174882B44D1A65 /* ftp.c in Sources */ = {isa = PBXBuildFile; fileRef = 56CEEE2C9DEA4950A0D53AF7 /* ftp.c */; };
 		96F2256CD3484931A4401C7D /* bf_null.c in Sources */ = {isa = PBXBuildFile; fileRef = D3168FA6A3204DD0B3E1A4CC /* bf_null.c */; };
+		9728F3382FD80744000FC1E3 /* ios_support.m in Sources */ = {isa = PBXBuildFile; fileRef = 9728F3362FD80744000FC1E3 /* ios_support.m */; };
 		9735F3028E6F4591A8EFCD6C /* dh_meth.c in Sources */ = {isa = PBXBuildFile; fileRef = B0196B56F711421BAD9B32E0 /* dh_meth.c */; };
 		973E0F7547D649C5BAFB487D /* mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E7F3A08178347A985273E61 /* mem.c */; };
 		974997187705444EB92E9BCB /* ocb128.c in Sources */ = {isa = PBXBuildFile; fileRef = 3BB40C7466EC42909988E065 /* ocb128.c */; };
@@ -1862,6 +1863,9 @@
 		95D94C169F7D47DCA2A32A13 /* ws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ws.c; path = src/curl/lib/ws.c; sourceTree = SOURCE_ROOT; };
 		95FA2B482F744750B9B38C18 /* ec_check.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ec_check.c; path = src/openssl/crypto/ec/ec_check.c; sourceTree = SOURCE_ROOT; };
 		966859FD1EE040D6ABA84FBF /* wp_dgst.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = wp_dgst.c; path = src/openssl/crypto/whrlpool/wp_dgst.c; sourceTree = SOURCE_ROOT; };
+		9728F3352FD80744000FC1E3 /* ios_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_support.h; sourceTree = "<group>"; };
+		9728F3362FD80744000FC1E3 /* ios_support.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_support.m; sourceTree = "<group>"; };
+		9728F3372FD80744000FC1E3 /* skyemu_dll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = skyemu_dll.h; sourceTree = "<group>"; };
 		97321757426241A5B12268F6 /* multihandle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = multihandle.h; path = src/curl/lib/multihandle.h; sourceTree = SOURCE_ROOT; };
 		9759D302E2024F4487B43EF4 /* m_mdc2.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = m_mdc2.c; path = src/openssl/crypto/evp/m_mdc2.c; sourceTree = SOURCE_ROOT; };
 		97D0009593DF4CC9A1DFF37F /* bf_cfb64.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bf_cfb64.c; path = src/openssl/crypto/bf/bf_cfb64.c; sourceTree = SOURCE_ROOT; };
@@ -3576,6 +3580,7 @@
 		85820395C62D46E1AE16535F = {
 			isa = PBXGroup;
 			children = (
+				9728F3342FD80704000FC1E3 /* App */,
 				9DF93C2C9672406BBC7708B8 /* ALL_BUILD */,
 				6810CB51434449938C1D6D34 /* Lua */,
 				C23D502D78934E08B40D5533 /* SkyEmu */,
@@ -3680,6 +3685,16 @@
 				088DF112DFFA4309B821AAF5 /* CMakeLists.txt */,
 			);
 			name = crypto;
+			sourceTree = "<group>";
+		};
+		9728F3342FD80704000FC1E3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9728F3352FD80744000FC1E3 /* ios_support.h */,
+				9728F3362FD80744000FC1E3 /* ios_support.m */,
+				9728F3372FD80744000FC1E3 /* skyemu_dll.h */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		9B03D398FEFA46C48D59004A /* ARM */ = {
@@ -4187,6 +4202,7 @@
 				C9D154D15C1B4491AD1FCE2C /* localization.c in Sources */,
 				A8681037E5344E718F15816E /* main.c in Sources */,
 				8E897AE3B5B54752A33320FD /* miniz.c in Sources */,
+				9728F3382FD80744000FC1E3 /* ios_support.m in Sources */,
 				1962984F210F40D7ABB0EA07 /* mutex.cpp in Sources */,
 				16EA5949A7324291A82FB88D /* rc_api_common.c in Sources */,
 				86A95981E63D4C189A93FB17 /* rc_api_editor.c in Sources */,
