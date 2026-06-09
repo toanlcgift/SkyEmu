@@ -494,7 +494,9 @@ extern "C" void https_open_url(const char* url)
     system(command.c_str());
 #elif defined(SE_PLATFORM_MACOS)
     std::string command = "open \"" + request + "\"";
+#ifndef TARGET_OS_MACCATALYST
     system(command.c_str());
+#endif
 #elif defined(SE_PLATFORM_ANDROID)
     ANativeActivity* activity = (ANativeActivity*)sapp_android_get_native_activity();
     JavaVM* pJavaVM = activity->vm;
