@@ -143,7 +143,7 @@ static int os_execute (lua_State *L) {
   const char *cmd = luaL_optstring(L, 1, NULL);
   int stat;
   errno = 0;
-#ifndef TARGET_OS_MACCATALYST
+#ifndef SE_PLATFORM_MACOS
   stat = l_system(cmd);
 #else
   stat = 0;
