@@ -6043,9 +6043,9 @@ void se_draw_controller_config(gui_state_t* gui){
   bool modified = se_handle_keybind_settings(SE_BIND_KEY,&(cont->key));
   modified |= se_handle_keybind_settings(SE_BIND_ANALOG,&(cont->analog));
   if(se_button("Reset Default Controller Bindings",(ImVec2){0,0})){
-#ifndef _SAPP_IOS
+#ifndef TARGET_OS_MACCATALYST
       se_set_default_controller_binds(cont);
-#endif // _SAPP_IOS
+#endif // TARGET_OS_MACCATALYST
     modified=true;
   }
   if(modified){
