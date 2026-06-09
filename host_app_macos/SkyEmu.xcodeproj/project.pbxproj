@@ -4055,7 +4055,7 @@
 				Base,
 			);
 			mainGroup = 85820395C62D46E1AE16535F;
-			projectDirPath = /Users/techrechard/Projects/SkyEmu;
+			projectDirPath = /Users/toannd/Projects/SkyEmu;
 			projectRoot = "";
 			targets = (
 				9A3193FD0FFC924C766CE581 /* ALL_BUILD */,
@@ -4102,7 +4102,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/techrechard/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/techrechard/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/toannd/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/Debug/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/toannd/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/Release/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/skyemu_libretro.dylib\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -E cmake_symlink_library /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/skyemu_libretro.dylib\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		571234464C2A5D0D43F1AB42 /* CMake PostBuild Rules */ = {
@@ -4118,7 +4118,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cpack -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME --config ./CPackConfig.cmake\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5A41BB6EF4571944706F5B3B /* Generate CMakeFiles/ALL_BUILD */ = {
@@ -4131,11 +4131,11 @@
 			);
 			name = "Generate CMakeFiles/ALL_BUILD";
 			outputPaths = (
-				/Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/ALL_BUILD,
+				/Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/ALL_BUILD,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  echo Build\\ all\\ projects\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		864ED3786F8D604C46F01F3C /* Generate CMakeFiles/ZERO_CHECK */ = {
@@ -4148,11 +4148,11 @@
 			);
 			name = "Generate CMakeFiles/ZERO_CHECK";
 			outputPaths = (
-				/Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/ZERO_CHECK,
+				/Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/ZERO_CHECK,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  make -f /Users/techrechard/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  make -f /Users/techrechard/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  make -f /Users/techrechard/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  make -f /Users/techrechard/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  make -f /Users/toannd/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  make -f /Users/toannd/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  make -f /Users/toannd/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  make -f /Users/toannd/Projects/SkyEmu/build_macos/CMakeScripts/ReRunCMake.make\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		93426DA6A4AC2C2AC9CE883C /* CMake PostBuild Rules */ = {
@@ -4168,7 +4168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos\n  /usr/local/bin/cmake -DBUILD_TYPE=$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P cmake_install.cmake\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A272C5CED23FAAFCD5B6D680 /* Generate src/curl/CMakeFiles/curl_uninstall */ = {
@@ -4181,11 +4181,11 @@
 			);
 			name = "Generate src/curl/CMakeFiles/curl_uninstall";
 			outputPaths = (
-				/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/CMakeFiles/curl_uninstall,
+				/Users/toannd/Projects/SkyEmu/build_macos/src/curl/CMakeFiles/curl_uninstall,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/techrechard/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\n";
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/toannd/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/toannd/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/toannd/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/toannd/Projects/SkyEmu/build_macos/src/curl\n  /usr/local/bin/cmake -P /Users/toannd/Projects/SkyEmu/build_macos/src/curl/CMake/cmake_uninstall.cmake\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5328,7 +5328,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5346,7 +5346,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -5365,11 +5365,11 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5454,7 +5454,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
-				SYMROOT = /Users/techrechard/Projects/SkyEmu/build_macos/build;
+				SYMROOT = /Users/toannd/Projects/SkyEmu/build_macos/build;
 			};
 			name = Debug;
 		};
@@ -5513,7 +5513,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/Debug;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5529,14 +5529,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -5608,7 +5608,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5623,7 +5623,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -5646,11 +5646,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -5669,7 +5669,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5684,7 +5684,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/bin/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/bin/Release;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5707,19 +5707,19 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/src/tinyfiledialogs,
-					/Users/techrechard/Projects/SkyEmu/src/sokol,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/src/tinyfiledialogs,
+					/Users/toannd/Projects/SkyEmu/src/sokol,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = /Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
+				INFOPLIST_FILE = /Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
@@ -5737,13 +5737,13 @@
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
-					/Users/techrechard/Projects/SkyEmu/build_macos/Release/libtinyfd.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Release/libLua.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Release/libsokol.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/Release/libcurl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/Release/libssl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/Release/libcrypto.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/Release/libcapstone.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Release/libtinyfd.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Release/libLua.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Release/libsokol.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/Release/libcurl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/Release/libssl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/Release/libcrypto.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/capstone/Release/libcapstone.a,
 					"-framework",
 					QuartzCore,
 					"-framework",
@@ -5754,7 +5754,7 @@
 					AudioToolbox,
 					"-framework",
 					Metal,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Release/libcimgui.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Release/libcimgui.a,
 					"-ldl",
 					"-framework",
 					SystemConfiguration,
@@ -5770,7 +5770,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5785,7 +5785,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/bin/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/bin/Debug;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5808,19 +5808,19 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/src/tinyfiledialogs,
-					/Users/techrechard/Projects/SkyEmu/src/sokol,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/src/tinyfiledialogs,
+					/Users/toannd/Projects/SkyEmu/src/sokol,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = /Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
+				INFOPLIST_FILE = /Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
@@ -5836,13 +5836,13 @@
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
-					/Users/techrechard/Projects/SkyEmu/build_macos/Debug/libtinyfd.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Debug/libLua.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Debug/libsokol.a,
-					"/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/Debug/libcurl-d.a",
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/Debug/libssl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/Debug/libcrypto.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/Debug/libcapstone.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Debug/libtinyfd.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Debug/libLua.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Debug/libsokol.a,
+					"/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/Debug/libcurl-d.a",
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/Debug/libssl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/Debug/libcrypto.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/capstone/Debug/libcapstone.a,
 					"-framework",
 					QuartzCore,
 					"-framework",
@@ -5853,7 +5853,7 @@
 					AudioToolbox,
 					"-framework",
 					Metal,
-					/Users/techrechard/Projects/SkyEmu/build_macos/Debug/libcimgui.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/Debug/libcimgui.a,
 					"-ldl",
 					"-framework",
 					SystemConfiguration,
@@ -5869,7 +5869,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5884,7 +5884,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5907,10 +5907,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -5930,7 +5930,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -5945,7 +5945,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/RelWithDebInfo;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5961,14 +5961,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6041,7 +6041,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6056,7 +6056,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6079,10 +6079,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6101,7 +6101,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6116,7 +6116,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6139,10 +6139,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6161,7 +6161,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6176,7 +6176,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/capstone/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6202,11 +6202,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/capstone/include,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/capstone/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6226,7 +6226,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6241,7 +6241,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6264,10 +6264,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6286,7 +6286,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6324,7 +6324,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/bin/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/bin/RelWithDebInfo;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6347,19 +6347,19 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/src/tinyfiledialogs,
-					/Users/techrechard/Projects/SkyEmu/src/sokol,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/src/tinyfiledialogs,
+					/Users/toannd/Projects/SkyEmu/src/sokol,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = /Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
+				INFOPLIST_FILE = /Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
@@ -6377,13 +6377,13 @@
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
-					/Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/libtinyfd.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/libLua.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/libsokol.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/RelWithDebInfo/libcurl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/RelWithDebInfo/libssl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/RelWithDebInfo/libcrypto.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/RelWithDebInfo/libcapstone.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/libtinyfd.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/libLua.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/libsokol.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/RelWithDebInfo/libcurl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/RelWithDebInfo/libssl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/RelWithDebInfo/libcrypto.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/capstone/RelWithDebInfo/libcapstone.a,
 					"-framework",
 					QuartzCore,
 					"-framework",
@@ -6394,7 +6394,7 @@
 					AudioToolbox,
 					"-framework",
 					Metal,
-					/Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo/libcimgui.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo/libcimgui.a,
 					"-ldl",
 					"-framework",
 					SystemConfiguration,
@@ -6410,7 +6410,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6425,7 +6425,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/MinSizeRel;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6441,14 +6441,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6521,7 +6521,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6536,7 +6536,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/Release;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6552,14 +6552,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib/../include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/..,
-					/Users/techrechard/Projects/SkyEmu/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib/../include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/..,
+					/Users/toannd/Projects/SkyEmu/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6632,7 +6632,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/libcurl_static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6672,7 +6672,7 @@
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = /Users/techrechard/Projects/SkyEmu/build_macos/build;
+				SYMROOT = /Users/toannd/Projects/SkyEmu/build_macos/build;
 			};
 			name = MinSizeRel;
 		};
@@ -6685,7 +6685,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/capstone/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6711,11 +6711,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/capstone/include,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/capstone/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6734,7 +6734,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6751,7 +6751,7 @@
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = /Users/techrechard/Projects/SkyEmu/build_macos/build;
+				SYMROOT = /Users/toannd/Projects/SkyEmu/build_macos/build;
 			};
 			name = RelWithDebInfo;
 		};
@@ -6764,7 +6764,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6787,10 +6787,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6809,7 +6809,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6824,7 +6824,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/bin/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/bin/MinSizeRel;
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6847,19 +6847,19 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/src/curl/include,
-					/Users/techrechard/Projects/SkyEmu/src/tinyfiledialogs,
-					/Users/techrechard/Projects/SkyEmu/src/sokol,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/src/curl/include,
+					/Users/toannd/Projects/SkyEmu/src/tinyfiledialogs,
+					/Users/toannd/Projects/SkyEmu/src/sokol,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = /Users/techrechard/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
+				INFOPLIST_FILE = /Users/toannd/Projects/SkyEmu/build_macos/CMakeFiles/SkyEmu.dir/Info.plist;
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
@@ -6877,13 +6877,13 @@
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
-					/Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/libtinyfd.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/libLua.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/libsokol.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/curl/lib/MinSizeRel/libcurl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/MinSizeRel/libssl.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/MinSizeRel/libcrypto.a,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/MinSizeRel/libcapstone.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/libtinyfd.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/libLua.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/libsokol.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/curl/lib/MinSizeRel/libcurl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/MinSizeRel/libssl.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/MinSizeRel/libcrypto.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/capstone/MinSizeRel/libcapstone.a,
 					"-framework",
 					QuartzCore,
 					"-framework",
@@ -6894,7 +6894,7 @@
 					AudioToolbox,
 					"-framework",
 					Metal,
-					/Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel/libcimgui.a,
+					/Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel/libcimgui.a,
 					"-ldl",
 					"-framework",
 					SystemConfiguration,
@@ -6910,7 +6910,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/SkyEmu.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -6925,7 +6925,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -6948,10 +6948,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -6971,7 +6971,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7055,7 +7055,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Release;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
@@ -7085,10 +7085,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@rpath";
@@ -7114,7 +7114,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7129,7 +7129,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7152,10 +7152,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7175,7 +7175,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7190,7 +7190,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7213,10 +7213,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7236,7 +7236,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7251,7 +7251,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7284,16 +7284,16 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/modes,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/modes,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7308,7 +7308,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/capstone/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7334,11 +7334,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/capstone/include,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/capstone/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7358,7 +7358,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7373,7 +7373,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7396,10 +7396,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7418,7 +7418,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7433,7 +7433,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7466,16 +7466,16 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/modes,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/modes,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7490,7 +7490,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7513,11 +7513,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7536,7 +7536,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7574,7 +7574,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Release;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Release;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -7597,11 +7597,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7620,7 +7620,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7635,7 +7635,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7658,10 +7658,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7681,7 +7681,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/tinyfd.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7765,7 +7765,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7783,7 +7783,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7802,11 +7802,11 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7821,7 +7821,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7844,10 +7844,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7867,7 +7867,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/Lua.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7882,7 +7882,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -7900,7 +7900,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -7919,11 +7919,11 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -7940,7 +7940,7 @@
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = /Users/techrechard/Projects/SkyEmu/build_macos/build;
+				SYMROOT = /Users/toannd/Projects/SkyEmu/build_macos/build;
 			};
 			name = Release;
 		};
@@ -7953,7 +7953,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/MinSizeRel;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
@@ -7983,10 +7983,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@rpath";
@@ -8012,7 +8012,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8027,7 +8027,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/ssl/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/ssl/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8045,7 +8045,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -8063,11 +8063,11 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/ssl.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8105,7 +8105,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8137,16 +8137,16 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/modes,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/modes,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8161,7 +8161,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Debug;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
@@ -8191,10 +8191,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@rpath";
@@ -8219,7 +8219,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8280,7 +8280,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8303,10 +8303,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -8324,7 +8324,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/cimgui.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8362,7 +8362,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/Debug;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/Debug;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8385,11 +8385,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/cimgui,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/cimgui,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -8407,7 +8407,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/sokol.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8422,7 +8422,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/capstone/MinSizeRel;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/capstone/MinSizeRel;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8448,11 +8448,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
-					/Users/techrechard/Projects/SkyEmu/src/capstone/include,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/capstone/include,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "";
@@ -8472,7 +8472,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/capstone-static.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8510,7 +8510,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/RelWithDebInfo;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
@@ -8540,10 +8540,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/utf8proc,
-					/Users/techrechard/Projects/SkyEmu/src,
-					/Users/techrechard/Projects/SkyEmu/src/rcheevos/include,
-					/Users/techrechard/Projects/SkyEmu/src/lua,
+					/Users/toannd/Projects/SkyEmu/src/utf8proc,
+					/Users/toannd/Projects/SkyEmu/src,
+					/Users/toannd/Projects/SkyEmu/src/rcheevos/include,
+					/Users/toannd/Projects/SkyEmu/src/lua,
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@rpath";
@@ -8569,7 +8569,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/skyemu_libretro.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -8584,7 +8584,7 @@
 					x86_64,
 				);
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = /Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto/RelWithDebInfo;
+				CONFIGURATION_BUILD_DIR = /Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto/RelWithDebInfo;
 				EXECUTABLE_PREFIX = lib;
 				EXECUTABLE_SUFFIX = .a;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -8617,16 +8617,16 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/Users/techrechard/Projects/SkyEmu/src/openssl,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/include,
-					/Users/techrechard/Projects/SkyEmu/build_macos/src/openssl/crypto,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
-					/Users/techrechard/Projects/SkyEmu/src/openssl/crypto/modes,
+					/Users/toannd/Projects/SkyEmu/src/openssl,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/include,
+					/Users/toannd/Projects/SkyEmu/build_macos/src/openssl/crypto,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448/arch_32,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/ec/curve448,
+					/Users/toannd/Projects/SkyEmu/src/openssl/crypto/modes,
 					"$(inherited)",
 				);
 				TARGETED_DEVICE_FAMILY = 2;
-				TARGET_TEMP_DIR = "/Users/techrechard/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				TARGET_TEMP_DIR = "/Users/toannd/Projects/SkyEmu/build_macos/build/crypto.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
