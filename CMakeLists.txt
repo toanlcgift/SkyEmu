@@ -494,10 +494,13 @@ if(NOT RETRO_CORE_ONLY)
             set(APP_ICON src/resources/icons/AppIcon.icns)
             set_source_files_properties(${APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
             add_executable(${PROJECT_NAME} ${SKYEMU_SRC} ${APP_ICON})
+            set_property(TARGET ${PROJECT_NAME} PROPERTY XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "SkyEmu")
+            set_property(TARGET ${PROJECT_NAME} PROPERTY MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/src/resources/ios-info.plist.in")
             # Mac Catalyst support
             set_target_properties(${PROJECT_NAME} PROPERTIES
               XCODE_ATTRIBUTE_SUPPORTED_PLATFORMS "macosx iphonesimulator maccatalyst"
               XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET "10.15"
+              XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2"
             )
       endif()
     elseif(IOS)
