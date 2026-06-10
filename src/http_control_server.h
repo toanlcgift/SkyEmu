@@ -19,4 +19,7 @@ void hcs_resume_callbacks();
 //Join this thread to the server thread
 void hcs_join_server_thread();
 
+//Check if the server is running
+bool hcs_is_server_running();
+
 #endif

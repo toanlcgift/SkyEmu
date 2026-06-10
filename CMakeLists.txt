@@ -117,6 +117,11 @@ if(NOT RETRO_CORE_ONLY)
       find_package(X11 REQUIRED)
   endif()
   
+  # macOS also needs threading support for std::thread
+  if (APPLE AND NOT EMSCRIPTEN AND NOT ANDROID)
+      find_package(Threads REQUIRED)
+  endif()
+  
   if (USE_SYSTEM_CURL OR USE_SYSTEM_OPENSSL)
     find_package(PkgConfig REQUIRED)
   endif()
@@ -547,7 +552,7 @@ if (EMSCRIPTEN)
 endif ()
 
 if(NOT RETRO_CORE_ONLY)
-  set(LINK_LIBS ${LINK_LIBS} sokol ${ALSA_LIBRARIES})
+  set(LINK_LIBS ${LINK_LIBS} sokol ${ALSA_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
   if(NOT EMSCRIPTEN)
     if (USE_SYSTEM_OPENSSL)

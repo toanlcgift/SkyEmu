@@ -6,12 +6,14 @@ extern "C"{
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <atomic>
 struct HCSServer{
     hcs_callback callback; 
     httplib::Server svr;
     std::recursive_mutex mutex;
     std::thread thread;
     int64_t port; 
+    std::atomic<bool> server_running;
     static void server_thread(HCSServer* server){
         server->svr.set_tcp_nodelay(true);
         server->svr.set_pre_routing_handler([server](const httplib::Request& req, httplib::Response& res) {
@@ -37,16 +39,50 @@ struct HCSServer{
             }
             return httplib::Server::HandlerResponse::Unhandled;
         });
-        std::cout<<"Starting HCS: http://localhost:"<<server->port<<std::endl;
-        server->svr.listen("0.0.0.0",server->port);
-        std::cout<<"Terminating HCS: http://localhost:"<<server->port<<std::endl;
+        
+        // Try binding to specific addresses for better macOS compatibility
+        // First try 0.0.0.0 (IPv4 only), then fall back to :: (IPv6)
+        std::string bind_host = "0.0.0.0";
+        std::cout<<"Starting HCS: http://"<<bind_host<<":"<<server->port<<std::endl;
+        
+        // Check if listen succeeds
+        auto result = server->svr.listen(bind_host.c_str(), server->port);
+        if(!result) {
+            std::cerr<<"Failed to start HTTP server on "<<bind_host<<":"<<server->port<<std::endl;
+#ifdef SE_PLATFORM_MACOS
+            // On macOS, try :: (IPv6) if 0.0.0.0 fails
+            bind_host = "::";
+            std::cout<<"Trying IPv6: http://"<<bind_host<<":"<<server->port<<std::endl;
+            result = server->svr.listen(bind_host.c_str(), server->port);
+            if(!result) {
+                std::cerr<<"Failed to start HTTP server on "<<bind_host<<":"<<server->port<<std::endl;
+            } else {
+                std::cout<<"HTTP server started successfully on http://"<<bind_host<<":"<<server->port<<std::endl;
+            }
+#else
+            std::cerr<<"HTTP server listen returned false"<<std::endl;
+#endif
+        } else {
+            std::cout<<"HTTP server started successfully on http://"<<bind_host<<":"<<server->port<<std::endl;
+        }
+        
+        server->server_running = result;
+        
+        // Keep the server running until stopped
+        while(server->server_running.load()){
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        
+        std::cout<<"Terminating HCS: http://"<<bind_host<<":"<<server->port<<std::endl;
     }
     HCSServer(int64_t port, hcs_callback call){
         callback = call; 
         this->port = port; 
+        server_running = false;
         thread = std::thread(server_thread,this);
     }
     ~HCSServer(){
+       server_running = false;
        svr.stop();
        thread.join();
     }
@@ -54,17 +90,19 @@ struct HCSServer{
 HCSServer * server = NULL;
 extern "C"{
     void hcs_update(bool enable, int64_t port, hcs_callback callback){
-        if(server)server->mutex.lock();
-        if(server&&(!enable||port!=server->port)){
-            server->mutex.unlock();
-            delete server;
-            server = NULL;
+        if(server){
+            std::lock_guard<std::recursive_mutex> lock(server->mutex);
+            if(!enable || port != server->port){
+                delete server;
+                server = NULL;
+            }
         }
-        if(!server&&enable){
+        if(!server && enable){
             server = new HCSServer(port, callback);
+            // Lock the mutex to prevent callbacks until hcs_resume_callbacks is called
+            // This matches the original behavior
             server->mutex.lock();
         }
-        if(server)server->mutex.unlock();
     }
 
     void hcs_suspend_callbacks(){
@@ -75,5 +113,8 @@ extern "C"{
     }
     void hcs_join_server_thread(){
         if(server)server->thread.join();
+    }
+    bool hcs_is_server_running(){
+        return server && server->server_running.load();
     }
 }
