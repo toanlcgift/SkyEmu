@@ -3894,14 +3894,6 @@ SOKOL_API_IMPL void sapp_ios_remote_keycode_callback(const char *data1, const ch
                               withObject:[NSString stringWithUTF8String:data1]
                               withObject:[NSString stringWithUTF8String:data2]];
         }
-    #elif defined(_SAPP_MACOS)
-        id appDelegate = [NSApplication sharedApplication].delegate;
-        SEL selector = @selector(handleRemoteKeycodeWithData1:data2:);
-        if ([appDelegate respondsToSelector:selector]) {
-            [appDelegate performSelector:selector
-                              withObject:[NSString stringWithUTF8String:data1]
-                              withObject:[NSString stringWithUTF8String:data2]];
-        }
     #else
         _SOKOL_UNUSED(data1);
         _SOKOL_UNUSED(data2);
@@ -3915,24 +3907,12 @@ SOKOL_API_IMPL void sapp_ios_ping_callback(void) {
         if ([appDelegate respondsToSelector:selector]) {
             [appDelegate performSelector:selector];
         }
-    #elif defined(_SAPP_MACOS)
-        id appDelegate = [NSApplication sharedApplication].delegate;
-        SEL selector = @selector(handlePing);
-        if ([appDelegate respondsToSelector:selector]) {
-            [appDelegate performSelector:selector];
-        }
     #endif
 }
 
 SOKOL_API_IMPL void sapp_ios_open_external_menu_callback(void) {
     #if defined(_SAPP_IOS)
         id appDelegate = [UIApplication sharedApplication].delegate;
-        SEL selector = @selector(handleOpenExternalMenu);
-        if ([appDelegate respondsToSelector:selector]) {
-            [appDelegate performSelector:selector];
-        }
-    #elif defined(_SAPP_MACOS)
-        id appDelegate = [NSApplication sharedApplication].delegate;
         SEL selector = @selector(handleOpenExternalMenu);
         if ([appDelegate respondsToSelector:selector]) {
             [appDelegate performSelector:selector];
