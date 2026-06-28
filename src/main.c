@@ -9371,3 +9371,59 @@ SKYEMU_API int win_main(int argc, char* argv[]) {
     return 0;
 }
 #endif /* SE_PLATFORM_WINDOWS_DLL */
+
+#ifdef SE_PLATFORM_IOS
+sapp_desc sokol_main(int argc, char* argv[]) {
+    emu_state.cmd_line_arg_count = argc;
+    emu_state.cmd_line_args = argv;
+    int width = 1280;
+    int height = 800;
+    int request_fullscreen = sapp_is_fullscreen() ? true : false;
+
+    if (argc > 2 && strcmp("run_gb_test", argv[1]) == 0) {
+        gui_state.test_runner_mode = true;
+        emu_state.cmd_line_arg_count = argc - 1;
+        emu_state.cmd_line_args = argv + 1;
+        width = SB_LCD_W;
+        height = SB_LCD_H;
+    }
+    if (argc > 2 && strcmp("run_gba_test", argv[1]) == 0) {
+        gui_state.test_runner_mode = true;
+        emu_state.cmd_line_arg_count = argc - 1;
+        emu_state.cmd_line_args = argv + 1;
+        width = GBA_LCD_W;
+        height = GBA_LCD_H;
+    }
+    if (argc > 1 && strcmp("fullscreen", emu_state.cmd_line_args[1]) == 0)
+    {
+        request_fullscreen = true;
+        emu_state.cmd_line_arg_count = argc - 1;
+        emu_state.cmd_line_args = argv + 1;
+    }
+    if (emu_state.cmd_line_arg_count > 3 && strcmp("http_server", emu_state.cmd_line_args[1]) == 0)headless_mode();
+
+#ifdef SE_PLATFORM_IOS
+    se_ios_set_documents_working_directory();
+#endif 
+
+    return (sapp_desc) {
+        .init_cb = init,
+            .frame_cb = frame,
+            .cleanup_cb = cleanup,
+            .event_cb = event,
+            .window_title = "SkyEmu",
+            .width = width,
+            .height = height,
+            .enable_dragndrop = true,
+            .enable_clipboard = true,
+            .high_dpi = true,
+            .max_dropped_file_path_length = 8192,
+            .fullscreen = request_fullscreen,
+#if defined(EMSCRIPTEN)
+            .max_dropped_files = 32,
+#endif
+            .swap_interval = 0,
+            .ios_keyboard_resizes_canvas = true
+    };
+}
+#endif /* SE_PLATFORM_IOS */
