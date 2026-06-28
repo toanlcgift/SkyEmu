@@ -9098,7 +9098,9 @@ static void init(void) {
   #if defined(EMSCRIPTEN)
   em_init_fs();
   #endif
+#ifndef TARGET_OS_MACCATALYST
   https_initialize();
+#endif
   gui_state.overlay_open= true;
 #ifdef USE_SDL
   SDL_SetMainReady();
@@ -9372,7 +9374,7 @@ SKYEMU_API int win_main(int argc, char* argv[]) {
 }
 #endif /* SE_PLATFORM_WINDOWS_DLL */
 
-#ifdef SE_PLATFORM_IOS
+#if defined(SE_PLATFORM_IOS) || TARGET_OS_MACCATALYST
 sapp_desc sokol_main(int argc, char* argv[]) {
     emu_state.cmd_line_arg_count = argc;
     emu_state.cmd_line_args = argv;
@@ -9402,7 +9404,7 @@ sapp_desc sokol_main(int argc, char* argv[]) {
     }
     if (emu_state.cmd_line_arg_count > 3 && strcmp("http_server", emu_state.cmd_line_args[1]) == 0)headless_mode();
 
-#ifdef SE_PLATFORM_IOS
+#if defined(SE_PLATFORM_IOS) || TARGET_OS_MACCATALYST
     se_ios_set_documents_working_directory();
 #endif 
 
@@ -9426,4 +9428,4 @@ sapp_desc sokol_main(int argc, char* argv[]) {
             .ios_keyboard_resizes_canvas = true
     };
 }
-#endif /* SE_PLATFORM_IOS */
+#endif /* SE_PLATFORM_IOS || TARGET_OS_MACCATALYST*/
