@@ -11027,3 +11027,42 @@ SOKOL_API_IMPL void sapp_html5_ask_leave_site(bool ask) {
 }
 
 #endif /* SOKOL_APP_IMPL */
+
+#ifdef _SAPP_ANDROID
+SOKOL_APP_API_DECL _sapp_android_run(const sapp_desc* desc) {
+    _sapp_init_state(&desc);
+    /* start loop thread */
+
+    int pipe_fd[2];
+    if (pipe(pipe_fd) != 0) {
+        SOKOL_LOG("Could not create thread pipe");
+        return;
+    }
+    _sapp.android.pt.read_from_main_fd = pipe_fd[0];
+    _sapp.android.pt.write_from_main_fd = pipe_fd[1];
+
+    pthread_mutex_init(&_sapp.android.pt.mutex, NULL);
+    pthread_cond_init(&_sapp.android.pt.cond, NULL);
+
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    pthread_create(&_sapp.android.pt.thread, &attr, _sapp_android_loop, 0);
+    pthread_attr_destroy(&attr);
+
+    /* wait until main loop has started */
+    pthread_mutex_lock(&_sapp.android.pt.mutex);
+    while (!_sapp.android.is_thread_started) {
+        pthread_cond_wait(&_sapp.android.pt.cond, &_sapp.android.pt.mutex);
+    }
+    pthread_mutex_unlock(&_sapp.android.pt.mutex);
+
+    /* send create msg */
+    pthread_mutex_lock(&_sapp.android.pt.mutex);
+    _sapp_android_msg(_SOKOL_ANDROID_MSG_CREATE);
+    while (!_sapp.android.has_created) {
+        pthread_cond_wait(&_sapp.android.pt.cond, &_sapp.android.pt.mutex);
+    }
+    pthread_mutex_unlock(&_sapp.android.pt.mutex);
+}
+#endif
