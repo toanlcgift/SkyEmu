@@ -7550,13 +7550,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 /*== Android ================================================================*/
 #if defined(_SAPP_ANDROID)
-sapp_desc sokol_main(int argc, char* argv[]) {
-    _SOKOL_UNUSED(argc);
-    _SOKOL_UNUSED(argv);
-    sapp_desc desc;
-    memset(&desc, 0, sizeof(desc));
-    return desc;
-}
 /* android loop thread */
 _SOKOL_PRIVATE bool _sapp_android_init_egl(void) {
     SOKOL_ASSERT(_sapp.android.display == EGL_NO_DISPLAY);
