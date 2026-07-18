@@ -9374,7 +9374,7 @@ SKYEMU_API int win_main(int argc, char* argv[]) {
 }
 #endif /* SE_PLATFORM_WINDOWS_DLL */
 
-#if defined(SE_PLATFORM_IOS) || TARGET_OS_MACCATALYST
+#if defined(SE_PLATFORM_IOS) || TARGET_OS_MACCATALYST || SE_PLATFORM_ANDROID
 sapp_desc sokol_main(int argc, char* argv[]) {
     emu_state.cmd_line_arg_count = argc;
     emu_state.cmd_line_args = argv;

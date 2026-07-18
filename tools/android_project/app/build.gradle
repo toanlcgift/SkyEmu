@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace = "com.skyemu"
     signingConfigs {
         release {
             storePassword 'skyemu-super-secure-password'
@@ -9,13 +10,13 @@ android {
             storeFile file('../skyemu-open-signing-store')
         }
     }
-    compileSdkVersion 33
+    compileSdkVersion 35
     ndkVersion '28.2.13676358'
 
     defaultConfig {
         signingConfig signingConfigs.release
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 35
         versionCode 32
         versionName "v3.2"
         setProperty("archivesBaseName", applicationId + "-v" + versionCode)
