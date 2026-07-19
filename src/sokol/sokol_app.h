@@ -8288,6 +8288,43 @@ _SOKOL_PRIVATE void _sapp_android_msg_set_native_window(ANativeWindow* window) {
     pthread_mutex_unlock(&_sapp.android.pt.mutex);
 }
 
+_SOKOL_PRIVATE void _sapp_android_initialize(void)
+{
+    sapp_desc desc = sokol_main(0, NULL);
+    _sapp_init_state(&desc);
+
+    int pipe_fd[2];
+    if (pipe(pipe_fd) != 0) {
+        SOKOL_LOG("Could not create thread pipe");
+        return;
+    }
+
+    _sapp.android.pt.read_from_main_fd  = pipe_fd[0];
+    _sapp.android.pt.write_from_main_fd = pipe_fd[1];
+
+    pthread_mutex_init(&_sapp.android.pt.mutex, NULL);
+    pthread_cond_init(&_sapp.android.pt.cond, NULL);
+
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    pthread_create(&_sapp.android.pt.thread, &attr, _sapp_android_loop, NULL);
+    pthread_attr_destroy(&attr);
+
+    pthread_mutex_lock(&_sapp.android.pt.mutex);
+    while (!_sapp.android.is_thread_started) {
+        pthread_cond_wait(&_sapp.android.pt.cond, &_sapp.android.pt.mutex);
+    }
+    pthread_mutex_unlock(&_sapp.android.pt.mutex);
+
+    pthread_mutex_lock(&_sapp.android.pt.mutex);
+    _sapp_android_msg(_SOKOL_ANDROID_MSG_CREATE);
+    while (!_sapp.android.has_created) {
+        pthread_cond_wait(&_sapp.android.pt.cond, &_sapp.android.pt.mutex);
+    }
+    pthread_mutex_unlock(&_sapp.android.pt.mutex);
+}
+
 JNIEXPORT void JNICALL
 Java_com_sky_SkyEmu_NativeBridge_setSurface(JNIEnv *env, jclass clazz, jobject surface) {
     ANativeWindow* window = NULL;
@@ -8298,6 +8335,51 @@ Java_com_sky_SkyEmu_NativeBridge_setSurface(JNIEnv *env, jclass clazz, jobject s
     }
 
     _sapp_android_msg_set_native_window(window);
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_initialize(
+    JNIEnv* env,
+    jclass clazz)
+{
+    static bool initialized = false;
+
+    if (initialized)
+        return;
+
+    initialized = true;
+
+    _sapp_android_initialize();
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_resume(JNIEnv* env, jclass clazz)
+{
+    _sapp_android_msg(_SOKOL_ANDROID_MSG_RESUME);
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_pause(JNIEnv* env, jclass clazz)
+{
+    _sapp_android_msg(_SOKOL_ANDROID_MSG_PAUSE);
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_focusChanged(
+    JNIEnv* env,
+    jclass clazz,
+    jboolean focused)
+{
+    _sapp_android_msg(
+        focused ?
+        _SOKOL_ANDROID_MSG_FOCUS :
+        _SOKOL_ANDROID_MSG_NO_FOCUS);
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_destroy(JNIEnv* env, jclass clazz)
+{
+    _sapp_android_msg(_SOKOL_ANDROID_MSG_DESTROY);
 }
 
 _SOKOL_PRIVATE void _sapp_android_on_native_window_created(ANativeActivity* activity, ANativeWindow* window) {
