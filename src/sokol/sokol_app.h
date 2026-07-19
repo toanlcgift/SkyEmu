@@ -901,6 +901,7 @@
 #define SOKOL_APP_INCLUDED (1)
 #include <stdint.h>
 #include <stdbool.h>
+#include <jni.h>
 
 #if defined(SOKOL_API_DECL) && !defined(SOKOL_APP_API_DECL)
 #define SOKOL_APP_API_DECL SOKOL_API_DECL
@@ -1313,6 +1314,7 @@ SOKOL_APP_API_DECL void sapp_ios_ping_callback(void);
 /* iOS: open external menu callback for MAUI interoperability */
 SOKOL_APP_API_DECL void sapp_ios_open_external_menu_callback(void);
 
+
 #ifdef __cplusplus
 } /* extern "C" */
 
@@ -1586,6 +1588,8 @@ inline void sapp_run(const sapp_desc& desc) { return sapp_run(&desc); }
     #include <unistd.h>
     #include <android/native_activity.h>
     #include <android/looper.h>
+    #include <android/native_window.h>
+    #include <android/native_window_jni.h>
     #include <EGL/egl.h>
     #if defined(SOKOL_GLES3)
         #include <GLES3/gl3.h>
@@ -8284,6 +8288,18 @@ _SOKOL_PRIVATE void _sapp_android_msg_set_native_window(ANativeWindow* window) {
     pthread_mutex_unlock(&_sapp.android.pt.mutex);
 }
 
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_setSurface(JNIEnv *env, jclass clazz, jobject surface) {
+    ANativeWindow* window = NULL;
+
+    if (surface != NULL)
+    {
+        window = ANativeWindow_fromSurface(env, surface);
+    }
+
+    _sapp_android_msg_set_native_window(window);
+}
+
 _SOKOL_PRIVATE void _sapp_android_on_native_window_created(ANativeActivity* activity, ANativeWindow* window) {
     SOKOL_LOG("NativeActivity onNativeWindowCreated()");
     _sapp_android_msg_set_native_window(window);
@@ -11026,3 +11042,4 @@ SOKOL_API_IMPL void sapp_html5_ask_leave_site(bool ask) {
 }
 
 #endif /* SOKOL_APP_IMPL */
+
