@@ -4738,9 +4738,10 @@ void se_android_get_language(char* language_buffer, size_t buffer_size){
     jmethodID getLanguageMethod= (*pJNIEnv)->GetStaticMethodID(pJNIEnv, ClassNativeActivity, "getLanguage", "()Ljava/lang/String;" );
     if(getLanguageMethod) {
         jstring joStringPropVal = (jstring) (*pJNIEnv)->CallStaticObjectMethod(pJNIEnv,ClassNativeActivity,getLanguageMethod);
-        const jchar *jcVal = (*pJNIEnv)->GetStringUTFChars(pJNIEnv, joStringPropVal, JNI_FALSE);
+        const jchar *jcVal = (const jchar *) (*pJNIEnv)->GetStringUTFChars(pJNIEnv, joStringPropVal,
+                                                                           JNI_FALSE);
         LOGD("Android Language is %s", jcVal);
-        strncpy(language_buffer, jcVal, buffer_size);
+        strncpy(language_buffer, (const char *) jcVal, buffer_size);
         (*pJNIEnv)->ReleaseStringChars(pJNIEnv, joStringPropVal, jcVal);
     }else LOGE("Failed to find getLanguage() method in JNIEnv");
     // Finished with the JVM.
