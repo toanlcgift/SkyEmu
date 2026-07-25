@@ -4738,9 +4738,10 @@ void se_android_get_language(char* language_buffer, size_t buffer_size){
     jmethodID getLanguageMethod= (*pJNIEnv)->GetStaticMethodID(pJNIEnv, ClassNativeActivity, "getLanguage", "()Ljava/lang/String;" );
     if(getLanguageMethod) {
         jstring joStringPropVal = (jstring) (*pJNIEnv)->CallStaticObjectMethod(pJNIEnv,ClassNativeActivity,getLanguageMethod);
-        const jchar *jcVal = (*pJNIEnv)->GetStringUTFChars(pJNIEnv, joStringPropVal, JNI_FALSE);
+        const jchar *jcVal = (const jchar *) (*pJNIEnv)->GetStringUTFChars(pJNIEnv, joStringPropVal,
+                                                                           JNI_FALSE);
         LOGD("Android Language is %s", jcVal);
-        strncpy(language_buffer, jcVal, buffer_size);
+        strncpy(language_buffer, (const char *) jcVal, buffer_size);
         (*pJNIEnv)->ReleaseStringChars(pJNIEnv, joStringPropVal, jcVal);
     }else LOGE("Failed to find getLanguage() method in JNIEnv");
     // Finished with the JVM.
@@ -9278,36 +9279,59 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1rom(JNIEnv *e
     se_load_rom(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1rom(JNIEnv *env, jobject thiz, jstring filePath) {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1rom(env, thiz, filePath);
+}
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(JNIEnv *env, jobject thiz, jstring filePath) {
   const char *nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
   se_file_browser_accept(nativeFilePath);
   (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
+}
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1file(JNIEnv *env, jobject thiz, jstring filePath) {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(env, thiz, filePath);
 }
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
     const char *nativeFilePath = (*env)->GetStringUTFChars(env, filePath, 0);
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(env, thiz, filePath);
+}
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
     show_ui = isShow;
+}
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(env, thiz, isShow);
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on() {
     gui_state.settings.stretch_to_fit = 1;
 }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1on() {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on();
+}
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off() {
     gui_state.settings.stretch_to_fit = 0;
+}
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1off() {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off();
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     se_capture_state_slot(slot);
 }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(env, thiz, slot);
+}
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     se_restore_state_slot(slot);
 }
-
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(env, thiz, slot);
+}
 #endif
 
 #ifdef SE_PLATFORM_WINDOWS_DLL
