@@ -9279,7 +9279,7 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1rom(JNIEnv *e
     se_load_rom(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1load_1rom(JNIEnv *env, jobject thiz, jstring filePath) {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1rom(JNIEnv *env, jobject thiz, jstring filePath) {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1rom(env, thiz, filePath);
 }
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(JNIEnv *env, jobject thiz, jstring filePath) {
@@ -9287,7 +9287,7 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(JNIEnv *
   se_file_browser_accept(nativeFilePath);
   (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1load_1file(JNIEnv *env, jobject thiz, jstring filePath) {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1file(JNIEnv *env, jobject thiz, jstring filePath) {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1file(env, thiz, filePath);
 }
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
@@ -9295,41 +9295,41 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(JNIEnv *
     se_load_html(nativeFilePath);
     (*env)->ReleaseStringUTFChars(env, filePath, nativeFilePath);
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1load_1html(JNIEnv *env, jobject thiz, jstring filePath) {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1load_1html(env, thiz, filePath);
 }
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
     show_ui = isShow;
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1show_1ui(JNIEnv* env, jobject thiz, jboolean isShow) {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(env, thiz, isShow);
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on() {
     gui_state.settings.stretch_to_fit = 1;
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1stretch_1on() {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1on() {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on();
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off() {
     gui_state.settings.stretch_to_fit = 0;
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1stretch_1off() {
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1off() {
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off();
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     se_capture_state_slot(slot);
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(env, thiz, slot);
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     se_restore_state_slot(slot);
 }
-void Java_com_sky_SkyEmu_MainActivity_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(env, thiz, slot);
 }
 #endif
