@@ -1,4 +1,4 @@
-#if defined(SOKOL_IMPL) && !defined(SOKOL_APP_IMPL)
+﻿#if defined(SOKOL_IMPL) && !defined(SOKOL_APP_IMPL)
 #define SOKOL_APP_IMPL
 #endif
 #ifndef SOKOL_APP_INCLUDED
@@ -1884,6 +1884,7 @@ typedef struct {
     bool is_thread_started;
     bool is_thread_stopping;
     bool is_thread_stopped;
+    bool is_dummy_activity;
     bool has_created;
     bool has_resumed;
     bool has_focus;
@@ -7659,6 +7660,7 @@ _SOKOL_PRIVATE bool _sapp_android_init_egl_surface(ANativeWindow* window) {
     /* create egl surface and make it current */
     EGLSurface surface = eglCreateWindowSurface(_sapp.android.display, _sapp.android.config, window, NULL);
     if (surface == EGL_NO_SURFACE) {
+                    SOKOL_LOG("eglCreateWindowSurface returned EGL_NO_SURFACE");
         return false;
     }
     if (eglMakeCurrent(_sapp.android.display, surface, surface, _sapp.android.context) == EGL_FALSE) {
@@ -7745,6 +7747,19 @@ _SOKOL_PRIVATE void _sapp_android_cleanup(void) {
     }
     /* always try to cleanup by destroying egl context */
     _sapp_android_cleanup_egl();
+
+    if (_sapp.android.is_dummy_activity && _sapp.android.activity) {
+        if (_sapp.android.activity->clazz) {
+            JNIEnv* env = _sapp.android.activity->env;
+            (*env)->DeleteGlobalRef(env, _sapp.android.activity->clazz);
+        }
+        if (_sapp.android.activity->internalDataPath) {
+            SOKOL_FREE((void*)_sapp.android.activity->internalDataPath);
+        }
+        SOKOL_FREE(_sapp.android.activity);
+        _sapp.android.activity = NULL;
+        _sapp.android.is_dummy_activity = false;
+    }
 }
 
 _SOKOL_PRIVATE void _sapp_android_shutdown(void) {
@@ -7779,6 +7794,7 @@ _SOKOL_PRIVATE bool _sapp_android_touch_event(const AInputEvent* e) {
     switch (action) {
         case AMOTION_EVENT_ACTION_DOWN:
             SOKOL_LOG("Touch: down");
+            break;
         case AMOTION_EVENT_ACTION_POINTER_DOWN:
             SOKOL_LOG("Touch: ptr down");
             type = SAPP_EVENTTYPE_TOUCHES_BEGAN;
@@ -7788,6 +7804,7 @@ _SOKOL_PRIVATE bool _sapp_android_touch_event(const AInputEvent* e) {
             break;
         case AMOTION_EVENT_ACTION_UP:
             SOKOL_LOG("Touch: up");
+            break;
         case AMOTION_EVENT_ACTION_POINTER_UP:
             SOKOL_LOG("Touch: ptr up");
             type = SAPP_EVENTTYPE_TOUCHES_ENDED;
@@ -8288,10 +8305,31 @@ _SOKOL_PRIVATE void _sapp_android_msg_set_native_window(ANativeWindow* window) {
     pthread_mutex_unlock(&_sapp.android.pt.mutex);
 }
 
-_SOKOL_PRIVATE void _sapp_android_initialize(void)
+_SOKOL_PRIVATE void _sapp_android_initialize(JNIEnv* env, jobject activity)
 {
     sapp_desc desc = sokol_main(0, NULL);
     _sapp_init_state(&desc);
+
+    if (activity) {
+        _sapp.android.is_dummy_activity = true;
+        _sapp.android.activity = (ANativeActivity*) SOKOL_CALLOC(1, sizeof(ANativeActivity));
+        (*env)->GetJavaVM(env, &_sapp.android.activity->vm);
+        _sapp.android.activity->env = env;
+        _sapp.android.activity->clazz = (*env)->NewGlobalRef(env, activity);
+
+        // Get internal data path
+        jclass context_class = (*env)->GetObjectClass(env, activity);
+        jmethodID get_files_dir = (*env)->GetMethodID(env, context_class, "getFilesDir", "()Ljava/io/File;");
+        jobject file_obj = (*env)->CallObjectMethod(env, activity, get_files_dir);
+        jclass file_class = (*env)->GetObjectClass(env, file_obj);
+        jmethodID get_absolute_path = (*env)->GetMethodID(env, file_class, "getAbsolutePath", "()Ljava/lang/String;");
+        jstring path_str = (jstring)(*env)->CallObjectMethod(env, file_obj, get_absolute_path);
+        const char* path = (*env)->GetStringUTFChars(env, path_str, NULL);
+        char* path_copy = (char*) SOKOL_CALLOC(1, strlen(path) + 1);
+        strcpy(path_copy, path);
+        _sapp.android.activity->internalDataPath = path_copy;
+        (*env)->ReleaseStringUTFChars(env, path_str, path);
+    }
 
     int pipe_fd[2];
     if (pipe(pipe_fd) != 0) {
@@ -8340,7 +8378,8 @@ Java_com_sky_SkyEmu_NativeBridge_setSurface(JNIEnv *env, jclass clazz, jobject s
 JNIEXPORT void JNICALL
 Java_com_sky_SkyEmu_NativeBridge_initialize(
     JNIEnv* env,
-    jclass clazz)
+    jclass clazz,
+    jobject activity)
 {
     static bool initialized = false;
 
@@ -8349,7 +8388,7 @@ Java_com_sky_SkyEmu_NativeBridge_initialize(
 
     initialized = true;
 
-    _sapp_android_initialize();
+    _sapp_android_initialize(env, activity);
 }
 
 JNIEXPORT void JNICALL
@@ -8380,6 +8419,24 @@ JNIEXPORT void JNICALL
 Java_com_sky_SkyEmu_NativeBridge_destroy(JNIEnv* env, jclass clazz)
 {
     _sapp_android_msg(_SOKOL_ANDROID_MSG_DESTROY);
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_surfaceChanged(JNIEnv* env, jclass clazz, jint width, jint height)
+{
+    /* NOOP: Sokol handles surface resizing internally when it detects window size changes */
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_lowMemory(JNIEnv* env, jclass clazz)
+{
+    /* NOOP */
+}
+
+JNIEXPORT void JNICALL
+Java_com_sky_SkyEmu_NativeBridge_configurationChanged(JNIEnv* env, jclass clazz)
+{
+    /* NOOP */
 }
 
 _SOKOL_PRIVATE void _sapp_android_on_native_window_created(ANativeActivity* activity, ANativeWindow* window) {
