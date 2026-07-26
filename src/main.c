@@ -4960,6 +4960,16 @@ void se_android_request_permissions(){
       (*pJavaVM)->DetachCurrentThread(pJavaVM);
   }
 }
+void se_android_start_hcs() {
+#ifdef ENABLE_HTTP_CONTROL_SERVER
+    if (gui_state.settings.http_control_server_port == 0) {
+        gui_state.settings.http_control_server_port = 8080;
+    }
+    gui_state.settings.http_control_server_enable = true;
+    hcs_update(true, gui_state.settings.http_control_server_port, se_hcs_callback);
+    LOGI("HTTP Control Server started on port %d", gui_state.settings.http_control_server_port);
+#endif
+}
 #endif
 #ifdef EMSCRIPTEN
 void se_download_emscripten_file(const char * path){
