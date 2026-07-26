@@ -8361,6 +8361,9 @@ _SOKOL_PRIVATE void _sapp_android_initialize(JNIEnv* env, jobject activity)
         pthread_cond_wait(&_sapp.android.pt.cond, &_sapp.android.pt.mutex);
     }
     pthread_mutex_unlock(&_sapp.android.pt.mutex);
+
+    extern void se_android_start_hcs();
+    se_android_start_hcs();
 }
 
 JNIEXPORT void JNICALL
