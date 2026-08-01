@@ -106,6 +106,8 @@ SKYEMU_API int win_main(int argc, char* argv[]);
 SKYEMU_API void set_remote_keycode_callback(RemoteKeycodeCallback callback);
 SKYEMU_API void set_ping_callback(PingCallback callback);
 SKYEMU_API void set_external_menu_callback(ExternalMenuCallback callback);
+SKYEMU_API void se_capture_state_slot(int slot);
+SKYEMU_API void se_restore_state_slot(int slot);
 #endif
 
 #ifdef __cplusplus

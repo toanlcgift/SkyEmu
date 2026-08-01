@@ -901,7 +901,9 @@
 #define SOKOL_APP_INCLUDED (1)
 #include <stdint.h>
 #include <stdbool.h>
+#if defined(ANDROID)
 #include <jni.h>
+#endif
 
 #if defined(SOKOL_API_DECL) && !defined(SOKOL_APP_API_DECL)
 #define SOKOL_APP_API_DECL SOKOL_API_DECL

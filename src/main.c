@@ -6082,13 +6082,13 @@ void se_reset_default_gb_palette(){
     gui_state.settings.gb_palette[i]=palette[i*3]|(palette[i*3+1]<<8)|(palette[i*3+2]<<16);
   }
 }
-void se_capture_state_slot(int slot){
+SKYEMU_API void se_capture_state_slot(int slot){
   se_capture_state(&core, save_states+slot);
   char save_state_path[SB_FILE_PATH_SIZE];
   snprintf(save_state_path,SB_FILE_PATH_SIZE,"%s.slot%d.state.png",emu_state.save_data_base_path,slot);
   se_save_state_to_disk(save_states+slot,save_state_path);
 }
-void se_restore_state_slot(int slot){
+SKYEMU_API void se_restore_state_slot(int slot){
   if(save_states[slot].valid)se_restore_state(&core, save_states+slot);
 }
 void se_push_disabled(){
