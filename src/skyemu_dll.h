@@ -54,6 +54,13 @@ SKYEMU_API void se_hide_ui(void);
 SKYEMU_API void se_stretch_to_fit(int fit);
 
 /*
+   * New API: send a key event directly to the emulator.
+   * The function is exported on all platforms. It can be called
+   * from native code or via JNI on Android.
+   */
+SKYEMU_API void se_send_key(const char* key, float value);
+
+/*
  * SkyEmu Framebuffer Interface
  * 
  * The framebuffer is in BGRA format (4 bytes per pixel).
