@@ -9352,17 +9352,19 @@ void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1capture_1state_1slot(JNIE
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     se_restore_state_slot(slot);
 }
-/*
- * JNI wrapper for se_send_key.
- * Java method: com.sky.SkyEmu.EnhancedNativeActivity.se_android_send_key(String key, float value)
- */
-void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1send_1key(JNIEnv *env, jobject thiz, jstring key, jfloat value) {
-  const char *c_key = (*env)->GetStringUTFChars(env, key, 0);
-  se_send_key(c_key, value);
-  (*env)->ReleaseStringUTFChars(env, key, c_key);
-}
+
 void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1restore_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1restore_1state_1slot(env, thiz, slot);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1send_1key(JNIEnv *env, jobject thiz, jstring key, jfloat value) {
+    const char *c_key = (*env)->GetStringUTFChars(env, key, 0);
+    se_send_key(c_key, value);
+    (*env)->ReleaseStringUTFChars(env, key, c_key);
+}
+
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1send_1key(JNIEnv* env, jobject thiz, jstring key, jfloat value){
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1send_1key(env, thiz, key, value);
 }
 #endif
 
