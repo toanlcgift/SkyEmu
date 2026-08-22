@@ -54,6 +54,17 @@ SKYEMU_API void se_hide_ui(void);
 SKYEMU_API void se_stretch_to_fit(int fit);
 
 /*
+ * Screen shader modes:
+ *   0 = Pixelate (nearest-neighbor)
+ *   1 = Bilinear
+ *   2 = LCD filter
+ *   3 = LCD & Subpixels
+ *   4 = Smooth Upscale (xBRZ)
+ */
+SKYEMU_API void se_set_screen_shader(uint32_t shader_mode);
+SKYEMU_API uint32_t se_get_screen_shader(void);
+
+/*
    * New API: send a key event directly to the emulator.
    * The function is exported on all platforms. It can be called
    * from native code or via JNI on Android.

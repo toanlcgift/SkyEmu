@@ -29,4 +29,6 @@ public class MainSkyEmuObject {
     public native void se_android_capture_state_slot(int slot);
     public native void se_android_restore_state_slot(int slot);
     public native void se_android_send_key(String key, float value);
+    public native void se_android_set_screen_shader(int shaderMode);
+    public native int se_android_get_screen_shader();
 }

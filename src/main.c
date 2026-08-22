@@ -2661,6 +2661,17 @@ SKYEMU_API void se_hide_ui() {
 SKYEMU_API void se_stretch_to_fit(int fit) {
     gui_state.settings.stretch_to_fit = fit;
 }
+
+SKYEMU_API void se_set_screen_shader(uint32_t shader_mode) {
+    if (shader_mode <= 4) {
+        gui_state.settings.screen_shader = shader_mode;
+    }
+}
+
+SKYEMU_API uint32_t se_get_screen_shader(void) {
+    return gui_state.settings.screen_shader;
+}
+
 static void se_reset_core(){
   if(emu_state.rom_loaded==false)return; 
   se_load_rom(gui_state.recently_loaded_games[0].path);
@@ -9365,6 +9376,22 @@ void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1send_1key(JNIEnv *e
 
 void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1send_1key(JNIEnv* env, jobject thiz, jstring key, jfloat value){
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1send_1key(env, thiz, key, value);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1screen_1shader(JNIEnv* env, jobject thiz, jint shader_mode){
+    se_set_screen_shader((uint32_t)shader_mode);
+}
+
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1screen_1shader(JNIEnv* env, jobject thiz, jint shader_mode){
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1screen_1shader(env, thiz, shader_mode);
+}
+
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1shader(JNIEnv* env, jobject thiz){
+    return (jint)se_get_screen_shader();
+}
+
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1screen_1shader(JNIEnv* env, jobject thiz){
+    return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1shader(env, thiz);
 }
 #endif
 
