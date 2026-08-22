@@ -9675,17 +9675,11 @@ SE_JNI_SETTING_GETTER(integer_scaling, uint32_t, jint)
 SE_JNI_SETTING_SETTER(screen_rotation, uint32_t, jint)
 SE_JNI_SETTING_GETTER(screen_rotation, uint32_t, jint)
 
-SE_JNI_SETTING_SETTER(stretch_to_fit, uint32_t, jint)
-SE_JNI_SETTING_GETTER(stretch_to_fit, uint32_t, jint)
-
 SE_JNI_SETTING_SETTER(auto_hide_touch_controls, uint32_t, jint)
 SE_JNI_SETTING_GETTER(auto_hide_touch_controls, uint32_t, jint)
 
 SE_JNI_SETTING_SETTER(always_show_menubar, uint32_t, jint)
 SE_JNI_SETTING_GETTER(always_show_menubar, uint32_t, jint)
-
-SE_JNI_SETTING_SETTER(language, uint32_t, jint)
-SE_JNI_SETTING_GETTER(language, uint32_t, jint)
 
 SE_JNI_SETTING_SETTER(touch_controls_show_turbo, uint32_t, jint)
 SE_JNI_SETTING_GETTER(touch_controls_show_turbo, uint32_t, jint)
