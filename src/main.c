@@ -9570,18 +9570,18 @@ void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1show_1ui(JNIEnv* env, job
     Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1show_1ui(env, thiz, isShow);
 }
 
-void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on() {
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on(JNIEnv *env, jobject thiz) {
     gui_state.settings.stretch_to_fit = 1;
 }
-void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1on() {
-    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on();
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1on(JNIEnv *env, jobject thiz) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1on(env, thiz);
 }
 
-void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off() {
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off(JNIEnv *env, jobject thiz) {
     gui_state.settings.stretch_to_fit = 0;
 }
-void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1off() {
-    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off();
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1stretch_1off(JNIEnv *env, jobject thiz) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1stretch_1off(env, thiz);
 }
 
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1capture_1state_1slot(JNIEnv* env, jobject thiz, jint slot){
@@ -9625,115 +9625,354 @@ jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1screen_1shader(JNIEn
     return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1shader(env, thiz);
 }
 
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1stretch_1to_1fit(JNIEnv *env, jobject thiz, jint value) { se_stretch_to_fit((int)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1stretch_1to_1fit(JNIEnv *env, jobject thiz) { return (jint)se_get_stretch_to_fit(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1avoid_1overlapping_1touchscreen(JNIEnv *env, jobject thiz, jint value) { se_set_avoid_overlapping_touchscreen((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1avoid_1overlapping_1touchscreen(JNIEnv *env, jobject thiz) { return (jint)se_get_avoid_overlapping_touchscreen(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1touch_1screen_1show_1button_1labels(JNIEnv *env, jobject thiz, jint value) { se_set_touch_screen_show_button_labels((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1touch_1screen_1show_1button_1labels(JNIEnv *env, jobject thiz) { return (jint)se_get_touch_screen_show_button_labels(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1gba_1color_1correction_1mode(JNIEnv *env, jobject thiz, jint mode) { se_set_gba_color_correction_mode((uint32_t)mode); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1gba_1color_1correction_1mode(JNIEnv *env, jobject thiz) { return (jint)se_get_gba_color_correction_mode(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1nds_1layout(JNIEnv *env, jobject thiz, jint layout) { se_set_nds_layout((uint32_t)layout); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1nds_1layout(JNIEnv *env, jobject thiz) { return (jint)se_get_nds_layout(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1show_1screen_1bezel(JNIEnv *env, jobject thiz, jint value) { se_set_show_screen_bezel((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1show_1screen_1bezel(JNIEnv *env, jobject thiz) { return (jint)se_get_show_screen_bezel(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1language(JNIEnv *env, jobject thiz, jint language) { se_set_language_int((uint32_t)language); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1language(JNIEnv *env, jobject thiz) { return (jint)se_get_language_int(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1http_1control_1server_1enable(JNIEnv *env, jobject thiz, jint value) { se_set_http_control_server_enable((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1http_1control_1server_1enable(JNIEnv *env, jobject thiz) { return (jint)se_get_http_control_server_enable(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1http_1control_1server_1port(JNIEnv *env, jobject thiz, jint port) { se_set_http_control_server_port((uint32_t)port); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1http_1control_1server_1port(JNIEnv *env, jobject thiz) { return (jint)se_get_http_control_server_port(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1hardcore_1mode(JNIEnv *env, jobject thiz, jint value) { se_set_hardcore_mode((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1hardcore_1mode(JNIEnv *env, jobject thiz) { return (jint)se_get_hardcore_mode(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1draw_1challenge_1indicators(JNIEnv *env, jobject thiz, jint value) { se_set_draw_challenge_indicators((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1draw_1challenge_1indicators(JNIEnv *env, jobject thiz) { return (jint)se_get_draw_challenge_indicators(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1draw_1progress_1indicators(JNIEnv *env, jobject thiz, jint value) { se_set_draw_progress_indicators((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1draw_1progress_1indicators(JNIEnv *env, jobject thiz) { return (jint)se_get_draw_progress_indicators(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1draw_1leaderboard_1trackers(JNIEnv *env, jobject thiz, jint value) { se_set_draw_leaderboard_trackers((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1draw_1leaderboard_1trackers(JNIEnv *env, jobject thiz) { return (jint)se_get_draw_leaderboard_trackers(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1draw_1notifications(JNIEnv *env, jobject thiz, jint value) { se_set_draw_notifications((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1draw_1notifications(JNIEnv *env, jobject thiz) { return (jint)se_get_draw_notifications(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1only_1one_1notification(JNIEnv *env, jobject thiz, jint value) { se_set_only_one_notification((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1only_1one_1notification(JNIEnv *env, jobject thiz) { return (jint)se_get_only_one_notification(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1enable_1download_1cache(JNIEnv *env, jobject thiz, jint value) { se_set_enable_download_cache((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1enable_1download_1cache(JNIEnv *env, jobject thiz) { return (jint)se_get_enable_download_cache(); }
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1draw_1debug_1menu(JNIEnv *env, jobject thiz, jint value) { se_set_draw_debug_menu((uint32_t)value); }
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1draw_1debug_1menu(JNIEnv *env, jobject thiz) { return (jint)se_get_draw_debug_menu(); }
+
 /* ---- JNI bindings for all settings ---- */
 
-#define SE_JNI_SETTING_SETTER(name, type_c, type_jni) \
-    void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1_##name(JNIEnv* env, jobject thiz, type_jni value) { \
-        se_set_##name((type_c)value); \
-    } \
-    void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1_##name(JNIEnv* env, jobject thiz, type_jni value) { \
-        Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1_##name(env, thiz, value); \
-    }
-
-#define SE_JNI_SETTING_GETTER(name, type_c, type_jni) \
-    type_jni Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1_##name(JNIEnv* env, jobject thiz) { \
-        return (type_jni)se_get_##name(); \
-    } \
-    type_jni Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1_##name(JNIEnv* env, jobject thiz) { \
-        return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1_##name(env, thiz); \
-    }
-
 /* Float settings */
-SE_JNI_SETTING_SETTER(volume, float, jfloat)
-SE_JNI_SETTING_GETTER(volume, float, jfloat)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1volume(JNIEnv *env, jobject thiz,
+                                                                         jfloat value) {
+  se_set_volume((float) value);
+}
 
-SE_JNI_SETTING_SETTER(ghosting, float, jfloat)
-SE_JNI_SETTING_GETTER(ghosting, float, jfloat)
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1volume(JNIEnv *env, jobject thiz,
+                                                                   jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1volume(env, thiz, value);
+}
 
-SE_JNI_SETTING_SETTER(color_correction, float, jfloat)
-SE_JNI_SETTING_GETTER(color_correction, float, jfloat)
+jfloat Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1volume(JNIEnv *env,
+                                                                           jobject thiz) { return (jfloat) se_get_volume(); }
 
-SE_JNI_SETTING_SETTER(touch_controls_opacity, float, jfloat)
-SE_JNI_SETTING_GETTER(touch_controls_opacity, float, jfloat)
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1volume(JNIEnv *env, jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1volume(env, thiz);
+}
 
-SE_JNI_SETTING_SETTER(touch_controls_scale, float, jfloat)
-SE_JNI_SETTING_GETTER(touch_controls_scale, float, jfloat)
+void
+Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1ghosting(JNIEnv *env, jobject thiz,
+                                                                      jfloat value) {
+  se_set_ghosting((float) value);
+}
 
-SE_JNI_SETTING_SETTER(custom_font_scale, float, jfloat)
-SE_JNI_SETTING_GETTER(custom_font_scale, float, jfloat)
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1ghosting(JNIEnv *env, jobject thiz,
+                                                                     jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1ghosting(env, thiz, value);
+}
 
-SE_JNI_SETTING_SETTER(gui_scale_factor, float, jfloat)
-SE_JNI_SETTING_GETTER(gui_scale_factor, float, jfloat)
+jfloat Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1ghosting(JNIEnv *env,
+                                                                             jobject thiz) { return (jfloat) se_get_ghosting(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1ghosting(JNIEnv *env, jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1ghosting(env, thiz);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1color_1correction(JNIEnv *env,
+                                                                                    jobject thiz,
+                                                                                    jfloat value) {
+  se_set_color_correction((float) value);
+}
+
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1color_1correction(JNIEnv *env, jobject thiz,
+                                                                         jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1color_1correction(env, thiz, value);
+}
+
+jfloat Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1color_1correction(JNIEnv *env,
+                                                                                      jobject thiz) { return (jfloat) se_get_color_correction(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1color_1correction(JNIEnv *env,
+                                                                                jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1color_1correction(env, thiz);
+}
+
+void
+Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1opacity(JNIEnv *env,
+                                                                                      jobject thiz,
+                                                                                      jfloat value) {
+  se_set_touch_controls_opacity((float) value);
+}
+
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1touch_1controls_1opacity(JNIEnv *env,
+                                                                                     jobject thiz,
+                                                                                     jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1opacity(env, thiz,
+                                                                                        value);
+}
+
+jfloat
+Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1opacity(JNIEnv *env,
+                                                                                      jobject thiz) { return (jfloat) se_get_touch_controls_opacity(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1touch_1controls_1opacity(JNIEnv *env,
+                                                                                       jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1opacity(env,
+                                                                                               thiz);
+}
+
+void
+Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1scale(JNIEnv *env,
+                                                                                    jobject thiz,
+                                                                                    jfloat value) {
+  se_set_touch_controls_scale((float) value);
+}
+
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1touch_1controls_1scale(JNIEnv *env,
+                                                                                   jobject thiz,
+                                                                                   jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1scale(env, thiz,
+                                                                                      value);
+}
+
+jfloat
+Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1scale(JNIEnv *env,
+                                                                                    jobject thiz) { return (jfloat) se_get_touch_controls_scale(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1touch_1controls_1scale(JNIEnv *env,
+                                                                                     jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1scale(env,
+                                                                                             thiz);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1custom_1font_1scale(JNIEnv *env,
+                                                                                      jobject thiz,
+                                                                                      jfloat value) {
+  se_set_custom_font_scale((float) value);
+}
+
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1custom_1font_1scale(JNIEnv *env,
+                                                                                jobject thiz,
+                                                                                jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1custom_1font_1scale(env, thiz,
+                                                                                   value);
+}
+
+jfloat Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1custom_1font_1scale(JNIEnv *env,
+                                                                                        jobject thiz) { return (jfloat) se_get_custom_font_scale(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1custom_1font_1scale(JNIEnv *env,
+                                                                                  jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1custom_1font_1scale(env,
+                                                                                          thiz);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1gui_1scale_1factor(JNIEnv *env,
+                                                                                     jobject thiz,
+                                                                                     jfloat value) {
+  se_set_gui_scale_factor((float) value);
+}
+
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1gui_1scale_1factor(JNIEnv *env, jobject thiz,
+                                                                          jfloat value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1gui_1scale_1factor(env, thiz, value);
+}
+
+jfloat Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1gui_1scale_1factor(JNIEnv *env,
+                                                                                       jobject thiz) { return (jfloat) se_get_gui_scale_factor(); }
+
+jfloat Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1gui_1scale_1factor(JNIEnv *env,
+                                                                                 jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1gui_1scale_1factor(env, thiz);
+}
 
 /* uint32_t settings */
-SE_JNI_SETTING_SETTER(theme, uint32_t, jint)
-SE_JNI_SETTING_GETTER(theme, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1theme(JNIEnv *env, jobject thiz,
+                                                                        jint value) {
+  se_set_theme((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(integer_scaling, uint32_t, jint)
-SE_JNI_SETTING_GETTER(integer_scaling, uint32_t, jint)
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1theme(JNIEnv *env, jobject thiz,
+                                                                  jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1theme(env, thiz, value);
+}
 
-SE_JNI_SETTING_SETTER(screen_rotation, uint32_t, jint)
-SE_JNI_SETTING_GETTER(screen_rotation, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1theme(JNIEnv *env,
+                                                                        jobject thiz) { return (jint) se_get_theme(); }
 
-SE_JNI_SETTING_SETTER(auto_hide_touch_controls, uint32_t, jint)
-SE_JNI_SETTING_GETTER(auto_hide_touch_controls, uint32_t, jint)
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1theme(JNIEnv *env, jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1theme(env, thiz);
+}
 
-SE_JNI_SETTING_SETTER(always_show_menubar, uint32_t, jint)
-SE_JNI_SETTING_GETTER(always_show_menubar, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1integer_1scaling(JNIEnv *env,
+                                                                                   jobject thiz,
+                                                                                   jint value) {
+  se_set_integer_scaling((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(touch_controls_show_turbo, uint32_t, jint)
-SE_JNI_SETTING_GETTER(touch_controls_show_turbo, uint32_t, jint)
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1integer_1scaling(JNIEnv *env, jobject thiz,
+                                                                        jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1integer_1scaling(env, thiz, value);
+}
 
-SE_JNI_SETTING_SETTER(save_to_path, uint32_t, jint)
-SE_JNI_SETTING_GETTER(save_to_path, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1integer_1scaling(JNIEnv *env,
+                                                                                   jobject thiz) { return (jint) se_get_integer_scaling(); }
 
-SE_JNI_SETTING_SETTER(force_dmg_mode, uint32_t, jint)
-SE_JNI_SETTING_GETTER(force_dmg_mode, uint32_t, jint)
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1integer_1scaling(JNIEnv *env,
+                                                                             jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1integer_1scaling(env, thiz);
+}
 
-SE_JNI_SETTING_SETTER(gba_color_correction_mode, uint32_t, jint)
-SE_JNI_SETTING_GETTER(gba_color_correction_mode, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1screen_1rotation(JNIEnv *env,
+                                                                                   jobject thiz,
+                                                                                   jint value) {
+  se_set_screen_rotation((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(http_control_server_port, uint32_t, jint)
-SE_JNI_SETTING_GETTER(http_control_server_port, uint32_t, jint)
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1screen_1rotation(JNIEnv *env, jobject thiz,
+                                                                        jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1screen_1rotation(env, thiz, value);
+}
 
-SE_JNI_SETTING_SETTER(http_control_server_enable, uint32_t, jint)
-SE_JNI_SETTING_GETTER(http_control_server_enable, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1rotation(JNIEnv *env,
+                                                                                   jobject thiz) { return (jint) se_get_screen_rotation(); }
 
-SE_JNI_SETTING_SETTER(avoid_overlapping_touchscreen, uint32_t, jint)
-SE_JNI_SETTING_GETTER(avoid_overlapping_touchscreen, uint32_t, jint)
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1screen_1rotation(JNIEnv *env,
+                                                                             jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1rotation(env, thiz);
+}
 
-SE_JNI_SETTING_SETTER(hardcore_mode, uint32_t, jint)
-SE_JNI_SETTING_GETTER(hardcore_mode, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1auto_1hide_1touch_1controls(
+        JNIEnv *env, jobject thiz, jint value) {
+  se_set_auto_hide_touch_controls((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(draw_challenge_indicators, uint32_t, jint)
-SE_JNI_SETTING_GETTER(draw_challenge_indicators, uint32_t, jint)
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1auto_1hide_1touch_1controls(JNIEnv *env,
+                                                                                        jobject thiz,
+                                                                                        jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1auto_1hide_1touch_1controls(env,
+                                                                                           thiz,
+                                                                                           value);
+}
 
-SE_JNI_SETTING_SETTER(draw_progress_indicators, uint32_t, jint)
-SE_JNI_SETTING_GETTER(draw_progress_indicators, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1auto_1hide_1touch_1controls(
+        JNIEnv *env, jobject thiz) { return (jint) se_get_auto_hide_touch_controls(); }
 
-SE_JNI_SETTING_SETTER(draw_leaderboard_trackers, uint32_t, jint)
-SE_JNI_SETTING_GETTER(draw_leaderboard_trackers, uint32_t, jint)
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1auto_1hide_1touch_1controls(JNIEnv *env,
+                                                                                        jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1auto_1hide_1touch_1controls(
+          env, thiz);
+}
 
-SE_JNI_SETTING_SETTER(draw_notifications, uint32_t, jint)
-SE_JNI_SETTING_GETTER(draw_notifications, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1always_1show_1menubar(JNIEnv *env,
+                                                                                        jobject thiz,
+                                                                                        jint value) {
+  se_set_always_show_menubar((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(only_one_notification, uint32_t, jint)
-SE_JNI_SETTING_GETTER(only_one_notification, uint32_t, jint)
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1always_1show_1menubar(JNIEnv *env,
+                                                                                  jobject thiz,
+                                                                                  jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1always_1show_1menubar(env, thiz,
+                                                                                     value);
+}
 
-SE_JNI_SETTING_SETTER(enable_download_cache, uint32_t, jint)
-SE_JNI_SETTING_GETTER(enable_download_cache, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1always_1show_1menubar(JNIEnv *env,
+                                                                                        jobject thiz) { return (jint) se_get_always_show_menubar(); }
 
-SE_JNI_SETTING_SETTER(nds_layout, uint32_t, jint)
-SE_JNI_SETTING_GETTER(nds_layout, uint32_t, jint)
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1always_1show_1menubar(JNIEnv *env,
+                                                                                  jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1always_1show_1menubar(env,
+                                                                                            thiz);
+}
 
-SE_JNI_SETTING_SETTER(touch_screen_show_button_labels, uint32_t, jint)
-SE_JNI_SETTING_GETTER(touch_screen_show_button_labels, uint32_t, jint)
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1show_1turbo(
+        JNIEnv *env, jobject thiz, jint value) {
+  se_set_touch_controls_show_turbo((uint32_t) value);
+}
 
-SE_JNI_SETTING_SETTER(show_screen_bezel, uint32_t, jint)
-SE_JNI_SETTING_GETTER(show_screen_bezel, uint32_t, jint)
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1touch_1controls_1show_1turbo(JNIEnv *env,
+                                                                                    jobject thiz,
+                                                                                    jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1touch_1controls_1show_1turbo(env,
+                                                                                            thiz,
+                                                                                            value);
+}
 
-SE_JNI_SETTING_SETTER(draw_debug_menu, uint32_t, jint)
-SE_JNI_SETTING_GETTER(draw_debug_menu, uint32_t, jint)
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1show_1turbo(
+        JNIEnv *env, jobject thiz) { return (jint) se_get_touch_controls_show_turbo(); }
+
+jint
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1touch_1controls_1show_1turbo(JNIEnv *env,
+                                                                                    jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1touch_1controls_1show_1turbo(
+          env, thiz);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1save_1to_1path(JNIEnv *env,
+                                                                                 jobject thiz,
+                                                                                 jint value) {
+  se_set_save_to_path((uint32_t) value);
+}
+
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1save_1to_1path(JNIEnv *env, jobject thiz,
+                                                                      jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1save_1to_1path(env, thiz, value);
+}
+
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1save_1to_1path(JNIEnv *env,
+                                                                                 jobject thiz) { return (jint) se_get_save_to_path(); }
+
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1save_1to_1path(JNIEnv *env,
+                                                                           jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1save_1to_1path(env, thiz);
+}
+
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1force_1dmg_1mode(JNIEnv *env,
+                                                                                   jobject thiz,
+                                                                                   jint value) {
+  se_set_force_dmg_mode((uint32_t) value);
+}
+
+void
+Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1force_1dmg_1mode(JNIEnv *env, jobject thiz,
+                                                                        jint value) {
+  Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1force_1dmg_1mode(env, thiz, value);
+}
+
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1force_1dmg_1mode(JNIEnv *env,
+                                                                                   jobject thiz) { return (jint) se_get_force_dmg_mode(); }
+
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1force_1dmg_1mode(JNIEnv *env,
+                                                                             jobject thiz) {
+  return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1force_1dmg_1mode(env, thiz);
+}
 
 /* GB palette JNI (index 0-3) */
 void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1gb_1palette(JNIEnv* env, jobject thiz, jint index, jint color) {
@@ -9749,8 +9988,6 @@ jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1gb_1palette(JNIEnv* 
     return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1gb_1palette(env, thiz, index);
 }
 
-#undef SE_JNI_SETTING_SETTER
-#undef SE_JNI_SETTING_GETTER
 #endif
 
 #ifdef SE_PLATFORM_WINDOWS_DLL
