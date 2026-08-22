@@ -2672,6 +2672,237 @@ SKYEMU_API uint32_t se_get_screen_shader(void) {
     return gui_state.settings.screen_shader;
 }
 
+/* ---- Persistent Settings API ---- */
+
+SKYEMU_API void se_set_volume(float volume) {
+    gui_state.settings.volume = volume;
+}
+SKYEMU_API float se_get_volume(void) {
+    return gui_state.settings.volume;
+}
+
+SKYEMU_API void se_set_theme(uint32_t theme) {
+    gui_state.settings.theme = theme;
+}
+SKYEMU_API uint32_t se_get_theme(void) {
+    return gui_state.settings.theme;
+}
+
+SKYEMU_API void se_set_gb_palette(int index, uint32_t color) {
+    if (index >= 0 && index < 4) gui_state.settings.gb_palette[index] = color;
+}
+SKYEMU_API uint32_t se_get_gb_palette(int index) {
+    if (index >= 0 && index < 4) return gui_state.settings.gb_palette[index];
+    return 0;
+}
+
+SKYEMU_API void se_set_ghosting(float ghosting) {
+    gui_state.settings.ghosting = ghosting;
+}
+SKYEMU_API float se_get_ghosting(void) {
+    return gui_state.settings.ghosting;
+}
+
+SKYEMU_API void se_set_color_correction(float value) {
+    gui_state.settings.color_correction = value;
+}
+SKYEMU_API float se_get_color_correction(void) {
+    return gui_state.settings.color_correction;
+}
+
+SKYEMU_API void se_set_integer_scaling(uint32_t value) {
+    gui_state.settings.integer_scaling = value;
+}
+SKYEMU_API uint32_t se_get_integer_scaling(void) {
+    return gui_state.settings.integer_scaling;
+}
+
+SKYEMU_API void se_set_screen_rotation(uint32_t rotation) {
+    if (rotation <= 3) gui_state.settings.screen_rotation = rotation;
+}
+SKYEMU_API uint32_t se_get_screen_rotation(void) {
+    return gui_state.settings.screen_rotation;
+}
+
+SKYEMU_API uint32_t se_get_stretch_to_fit(void) {
+    return gui_state.settings.stretch_to_fit;
+}
+
+SKYEMU_API void se_set_auto_hide_touch_controls(uint32_t value) {
+    gui_state.settings.auto_hide_touch_controls = value;
+}
+SKYEMU_API uint32_t se_get_auto_hide_touch_controls(void) {
+    return gui_state.settings.auto_hide_touch_controls;
+}
+
+SKYEMU_API void se_set_touch_controls_opacity(float opacity) {
+    gui_state.settings.touch_controls_opacity = opacity;
+}
+SKYEMU_API float se_get_touch_controls_opacity(void) {
+    return gui_state.settings.touch_controls_opacity;
+}
+
+SKYEMU_API void se_set_always_show_menubar(uint32_t value) {
+    gui_state.settings.always_show_menubar = value;
+}
+SKYEMU_API uint32_t se_get_always_show_menubar(void) {
+    return gui_state.settings.always_show_menubar;
+}
+
+SKYEMU_API void se_set_language_int(uint32_t language) {
+    gui_state.settings.language = language;
+}
+SKYEMU_API uint32_t se_get_language_int(void) {
+    return gui_state.settings.language;
+}
+
+SKYEMU_API void se_set_touch_controls_scale(float scale) {
+    gui_state.settings.touch_controls_scale = scale;
+}
+SKYEMU_API float se_get_touch_controls_scale(void) {
+    return gui_state.settings.touch_controls_scale;
+}
+
+SKYEMU_API void se_set_touch_controls_show_turbo(uint32_t value) {
+    gui_state.settings.touch_controls_show_turbo = value;
+}
+SKYEMU_API uint32_t se_get_touch_controls_show_turbo(void) {
+    return gui_state.settings.touch_controls_show_turbo;
+}
+
+SKYEMU_API void se_set_save_to_path(uint32_t value) {
+    gui_state.settings.save_to_path = value;
+}
+SKYEMU_API uint32_t se_get_save_to_path(void) {
+    return gui_state.settings.save_to_path;
+}
+
+SKYEMU_API void se_set_force_dmg_mode(uint32_t value) {
+    gui_state.settings.force_dmg_mode = value;
+}
+SKYEMU_API uint32_t se_get_force_dmg_mode(void) {
+    return gui_state.settings.force_dmg_mode;
+}
+
+SKYEMU_API void se_set_gba_color_correction_mode(uint32_t mode) {
+    if (mode <= 1) gui_state.settings.gba_color_correction_mode = mode;
+}
+SKYEMU_API uint32_t se_get_gba_color_correction_mode(void) {
+    return gui_state.settings.gba_color_correction_mode;
+}
+
+SKYEMU_API void se_set_http_control_server_port(uint32_t port) {
+    gui_state.settings.http_control_server_port = port;
+}
+SKYEMU_API uint32_t se_get_http_control_server_port(void) {
+    return gui_state.settings.http_control_server_port;
+}
+
+SKYEMU_API void se_set_http_control_server_enable(uint32_t value) {
+    gui_state.settings.http_control_server_enable = value;
+}
+SKYEMU_API uint32_t se_get_http_control_server_enable(void) {
+    return gui_state.settings.http_control_server_enable;
+}
+
+SKYEMU_API void se_set_avoid_overlapping_touchscreen(uint32_t value) {
+    if (value <= 3) gui_state.settings.avoid_overlaping_touchscreen = value;
+}
+SKYEMU_API uint32_t se_get_avoid_overlapping_touchscreen(void) {
+    return gui_state.settings.avoid_overlaping_touchscreen;
+}
+
+SKYEMU_API void se_set_custom_font_scale(float scale) {
+    gui_state.settings.custom_font_scale = scale;
+}
+SKYEMU_API float se_get_custom_font_scale(void) {
+    return gui_state.settings.custom_font_scale;
+}
+
+SKYEMU_API void se_set_hardcore_mode(uint32_t value) {
+    gui_state.settings.hardcore_mode = value;
+}
+SKYEMU_API uint32_t se_get_hardcore_mode(void) {
+    return gui_state.settings.hardcore_mode;
+}
+
+SKYEMU_API void se_set_draw_challenge_indicators(uint32_t value) {
+    gui_state.settings.draw_challenge_indicators = value;
+}
+SKYEMU_API uint32_t se_get_draw_challenge_indicators(void) {
+    return gui_state.settings.draw_challenge_indicators;
+}
+
+SKYEMU_API void se_set_draw_progress_indicators(uint32_t value) {
+    gui_state.settings.draw_progress_indicators = value;
+}
+SKYEMU_API uint32_t se_get_draw_progress_indicators(void) {
+    return gui_state.settings.draw_progress_indicators;
+}
+
+SKYEMU_API void se_set_draw_leaderboard_trackers(uint32_t value) {
+    gui_state.settings.draw_leaderboard_trackers = value;
+}
+SKYEMU_API uint32_t se_get_draw_leaderboard_trackers(void) {
+    return gui_state.settings.draw_leaderboard_trackers;
+}
+
+SKYEMU_API void se_set_draw_notifications(uint32_t value) {
+    gui_state.settings.draw_notifications = value;
+}
+SKYEMU_API uint32_t se_get_draw_notifications(void) {
+    return gui_state.settings.draw_notifications;
+}
+
+SKYEMU_API void se_set_gui_scale_factor(float scale) {
+    gui_state.settings.gui_scale_factor = scale;
+}
+SKYEMU_API float se_get_gui_scale_factor(void) {
+    return gui_state.settings.gui_scale_factor;
+}
+
+SKYEMU_API void se_set_only_one_notification(uint32_t value) {
+    gui_state.settings.only_one_notification = value;
+}
+SKYEMU_API uint32_t se_get_only_one_notification(void) {
+    return gui_state.settings.only_one_notification;
+}
+
+SKYEMU_API void se_set_enable_download_cache(uint32_t value) {
+    gui_state.settings.enable_download_cache = value;
+}
+SKYEMU_API uint32_t se_get_enable_download_cache(void) {
+    return gui_state.settings.enable_download_cache;
+}
+
+SKYEMU_API void se_set_nds_layout(uint32_t layout) {
+    gui_state.settings.nds_layout = layout;
+}
+SKYEMU_API uint32_t se_get_nds_layout(void) {
+    return gui_state.settings.nds_layout;
+}
+
+SKYEMU_API void se_set_touch_screen_show_button_labels(uint32_t value) {
+    gui_state.settings.touch_screen_show_button_labels = value;
+}
+SKYEMU_API uint32_t se_get_touch_screen_show_button_labels(void) {
+    return gui_state.settings.touch_screen_show_button_labels;
+}
+
+SKYEMU_API void se_set_show_screen_bezel(uint32_t value) {
+    gui_state.settings.show_screen_bezel = value;
+}
+SKYEMU_API uint32_t se_get_show_screen_bezel(void) {
+    return gui_state.settings.show_screen_bezel;
+}
+
+SKYEMU_API void se_set_draw_debug_menu(uint32_t value) {
+    gui_state.settings.draw_debug_menu = value;
+}
+SKYEMU_API uint32_t se_get_draw_debug_menu(void) {
+    return gui_state.settings.draw_debug_menu;
+}
+
 static void se_reset_core(){
   if(emu_state.rom_loaded==false)return; 
   se_load_rom(gui_state.recently_loaded_games[0].path);
@@ -9393,6 +9624,139 @@ jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1shader
 jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1screen_1shader(JNIEnv* env, jobject thiz){
     return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1screen_1shader(env, thiz);
 }
+
+/* ---- JNI bindings for all settings ---- */
+
+#define SE_JNI_SETTING_SETTER(name, type_c, type_jni) \
+    void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1_##name(JNIEnv* env, jobject thiz, type_jni value) { \
+        se_set_##name((type_c)value); \
+    } \
+    void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1_##name(JNIEnv* env, jobject thiz, type_jni value) { \
+        Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1_##name(env, thiz, value); \
+    }
+
+#define SE_JNI_SETTING_GETTER(name, type_c, type_jni) \
+    type_jni Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1_##name(JNIEnv* env, jobject thiz) { \
+        return (type_jni)se_get_##name(); \
+    } \
+    type_jni Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1_##name(JNIEnv* env, jobject thiz) { \
+        return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1_##name(env, thiz); \
+    }
+
+/* Float settings */
+SE_JNI_SETTING_SETTER(volume, float, jfloat)
+SE_JNI_SETTING_GETTER(volume, float, jfloat)
+
+SE_JNI_SETTING_SETTER(ghosting, float, jfloat)
+SE_JNI_SETTING_GETTER(ghosting, float, jfloat)
+
+SE_JNI_SETTING_SETTER(color_correction, float, jfloat)
+SE_JNI_SETTING_GETTER(color_correction, float, jfloat)
+
+SE_JNI_SETTING_SETTER(touch_controls_opacity, float, jfloat)
+SE_JNI_SETTING_GETTER(touch_controls_opacity, float, jfloat)
+
+SE_JNI_SETTING_SETTER(touch_controls_scale, float, jfloat)
+SE_JNI_SETTING_GETTER(touch_controls_scale, float, jfloat)
+
+SE_JNI_SETTING_SETTER(custom_font_scale, float, jfloat)
+SE_JNI_SETTING_GETTER(custom_font_scale, float, jfloat)
+
+SE_JNI_SETTING_SETTER(gui_scale_factor, float, jfloat)
+SE_JNI_SETTING_GETTER(gui_scale_factor, float, jfloat)
+
+/* uint32_t settings */
+SE_JNI_SETTING_SETTER(theme, uint32_t, jint)
+SE_JNI_SETTING_GETTER(theme, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(integer_scaling, uint32_t, jint)
+SE_JNI_SETTING_GETTER(integer_scaling, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(screen_rotation, uint32_t, jint)
+SE_JNI_SETTING_GETTER(screen_rotation, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(stretch_to_fit, uint32_t, jint)
+SE_JNI_SETTING_GETTER(stretch_to_fit, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(auto_hide_touch_controls, uint32_t, jint)
+SE_JNI_SETTING_GETTER(auto_hide_touch_controls, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(always_show_menubar, uint32_t, jint)
+SE_JNI_SETTING_GETTER(always_show_menubar, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(language, uint32_t, jint)
+SE_JNI_SETTING_GETTER(language, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(touch_controls_show_turbo, uint32_t, jint)
+SE_JNI_SETTING_GETTER(touch_controls_show_turbo, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(save_to_path, uint32_t, jint)
+SE_JNI_SETTING_GETTER(save_to_path, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(force_dmg_mode, uint32_t, jint)
+SE_JNI_SETTING_GETTER(force_dmg_mode, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(gba_color_correction_mode, uint32_t, jint)
+SE_JNI_SETTING_GETTER(gba_color_correction_mode, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(http_control_server_port, uint32_t, jint)
+SE_JNI_SETTING_GETTER(http_control_server_port, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(http_control_server_enable, uint32_t, jint)
+SE_JNI_SETTING_GETTER(http_control_server_enable, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(avoid_overlapping_touchscreen, uint32_t, jint)
+SE_JNI_SETTING_GETTER(avoid_overlapping_touchscreen, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(hardcore_mode, uint32_t, jint)
+SE_JNI_SETTING_GETTER(hardcore_mode, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(draw_challenge_indicators, uint32_t, jint)
+SE_JNI_SETTING_GETTER(draw_challenge_indicators, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(draw_progress_indicators, uint32_t, jint)
+SE_JNI_SETTING_GETTER(draw_progress_indicators, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(draw_leaderboard_trackers, uint32_t, jint)
+SE_JNI_SETTING_GETTER(draw_leaderboard_trackers, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(draw_notifications, uint32_t, jint)
+SE_JNI_SETTING_GETTER(draw_notifications, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(only_one_notification, uint32_t, jint)
+SE_JNI_SETTING_GETTER(only_one_notification, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(enable_download_cache, uint32_t, jint)
+SE_JNI_SETTING_GETTER(enable_download_cache, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(nds_layout, uint32_t, jint)
+SE_JNI_SETTING_GETTER(nds_layout, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(touch_screen_show_button_labels, uint32_t, jint)
+SE_JNI_SETTING_GETTER(touch_screen_show_button_labels, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(show_screen_bezel, uint32_t, jint)
+SE_JNI_SETTING_GETTER(show_screen_bezel, uint32_t, jint)
+
+SE_JNI_SETTING_SETTER(draw_debug_menu, uint32_t, jint)
+SE_JNI_SETTING_GETTER(draw_debug_menu, uint32_t, jint)
+
+/* GB palette JNI (index 0-3) */
+void Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1gb_1palette(JNIEnv* env, jobject thiz, jint index, jint color) {
+    se_set_gb_palette((int)index, (uint32_t)color);
+}
+void Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1set_1gb_1palette(JNIEnv* env, jobject thiz, jint index, jint color) {
+    Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1set_1gb_1palette(env, thiz, index, color);
+}
+jint Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1gb_1palette(JNIEnv* env, jobject thiz, jint index) {
+    return (jint)se_get_gb_palette((int)index);
+}
+jint Java_com_sky_SkyEmu_MainSkyEmuObject_se_1android_1get_1gb_1palette(JNIEnv* env, jobject thiz, jint index) {
+    return Java_com_sky_SkyEmu_EnhancedNativeActivity_se_1android_1get_1gb_1palette(env, thiz, index);
+}
+
+#undef SE_JNI_SETTING_SETTER
+#undef SE_JNI_SETTING_GETTER
 #endif
 
 #ifdef SE_PLATFORM_WINDOWS_DLL

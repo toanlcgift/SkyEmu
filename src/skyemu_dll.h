@@ -65,6 +65,143 @@ SKYEMU_API void se_set_screen_shader(uint32_t shader_mode);
 SKYEMU_API uint32_t se_get_screen_shader(void);
 
 /*
+ * Persistent Settings API
+ * Getters and setters for all gui_state.settings fields.
+ * Use these from Windows, macOS, iOS, or Android (via JNI).
+ */
+
+/* Volume (0.0 - 1.0) */
+SKYEMU_API void se_set_volume(float volume);
+SKYEMU_API float se_get_volume(void);
+
+/* Theme index */
+SKYEMU_API void se_set_theme(uint32_t theme);
+SKYEMU_API uint32_t se_get_theme(void);
+
+/* GB palette colors (index 0-3) */
+SKYEMU_API void se_set_gb_palette(int index, uint32_t color);
+SKYEMU_API uint32_t se_get_gb_palette(int index);
+
+/* Ghosting effect strength (0.0 - 1.0) */
+SKYEMU_API void se_set_ghosting(float ghosting);
+SKYEMU_API float se_get_ghosting(void);
+
+/* Color correction strength (0.0 - 1.0) */
+SKYEMU_API void se_set_color_correction(float value);
+SKYEMU_API float se_get_color_correction(void);
+
+/* Integer scaling: 0 = off, 1 = on */
+SKYEMU_API void se_set_integer_scaling(uint32_t value);
+SKYEMU_API uint32_t se_get_integer_scaling(void);
+
+/* Screen rotation: 0=None, 1=Left, 2=Right, 3=Upside Down */
+SKYEMU_API void se_set_screen_rotation(uint32_t rotation);
+SKYEMU_API uint32_t se_get_screen_rotation(void);
+
+/* Stretch to fit getter (setter already exists as se_stretch_to_fit) */
+SKYEMU_API uint32_t se_get_stretch_to_fit(void);
+
+/* Auto-hide touch controls: 0 = off, 1 = on */
+SKYEMU_API void se_set_auto_hide_touch_controls(uint32_t value);
+SKYEMU_API uint32_t se_get_auto_hide_touch_controls(void);
+
+/* Touch controls opacity (0.0 - 1.0) */
+SKYEMU_API void se_set_touch_controls_opacity(float opacity);
+SKYEMU_API float se_get_touch_controls_opacity(void);
+
+/* Always show menubar: 0 = off, 1 = on */
+SKYEMU_API void se_set_always_show_menubar(uint32_t value);
+SKYEMU_API uint32_t se_get_always_show_menubar(void);
+
+/* Language index */
+SKYEMU_API void se_set_language_int(uint32_t language);
+SKYEMU_API uint32_t se_get_language_int(void);
+
+/* Touch controls scale factor */
+SKYEMU_API void se_set_touch_controls_scale(float scale);
+SKYEMU_API float se_get_touch_controls_scale(void);
+
+/* Show turbo on touch controls: 0 = off, 1 = on */
+SKYEMU_API void se_set_touch_controls_show_turbo(uint32_t value);
+SKYEMU_API uint32_t se_get_touch_controls_show_turbo(void);
+
+/* Save game data to ROM path: 0 = off, 1 = on */
+SKYEMU_API void se_set_save_to_path(uint32_t value);
+SKYEMU_API uint32_t se_get_save_to_path(void);
+
+/* Force DMG mode for Color GB: 0 = off, 1 = on */
+SKYEMU_API void se_set_force_dmg_mode(uint32_t value);
+SKYEMU_API uint32_t se_get_force_dmg_mode(void);
+
+/* GBA color correction mode: 0 = SkyEmu, 1 = Higan */
+SKYEMU_API void se_set_gba_color_correction_mode(uint32_t mode);
+SKYEMU_API uint32_t se_get_gba_color_correction_mode(void);
+
+/* HTTP control server port */
+SKYEMU_API void se_set_http_control_server_port(uint32_t port);
+SKYEMU_API uint32_t se_get_http_control_server_port(void);
+
+/* HTTP control server enable: 0 = off, 1 = on */
+SKYEMU_API void se_set_http_control_server_enable(uint32_t value);
+SKYEMU_API uint32_t se_get_http_control_server_enable(void);
+
+/* Avoid overlapping touchscreen: 1=Portrait, 2=Landscape, 3=Both, 0=Off */
+SKYEMU_API void se_set_avoid_overlapping_touchscreen(uint32_t value);
+SKYEMU_API uint32_t se_get_avoid_overlapping_touchscreen(void);
+
+/* Custom font scale factor */
+SKYEMU_API void se_set_custom_font_scale(float scale);
+SKYEMU_API float se_get_custom_font_scale(void);
+
+/* Hardcore mode (achievements): 0 = off, 1 = on */
+SKYEMU_API void se_set_hardcore_mode(uint32_t value);
+SKYEMU_API uint32_t se_get_hardcore_mode(void);
+
+/* Draw challenge indicators: 0 = off, 1 = on */
+SKYEMU_API void se_set_draw_challenge_indicators(uint32_t value);
+SKYEMU_API uint32_t se_get_draw_challenge_indicators(void);
+
+/* Draw progress indicators: 0 = off, 1 = on */
+SKYEMU_API void se_set_draw_progress_indicators(uint32_t value);
+SKYEMU_API uint32_t se_get_draw_progress_indicators(void);
+
+/* Draw leaderboard trackers: 0 = off, 1 = on */
+SKYEMU_API void se_set_draw_leaderboard_trackers(uint32_t value);
+SKYEMU_API uint32_t se_get_draw_leaderboard_trackers(void);
+
+/* Draw notifications: 0 = off, 1 = on */
+SKYEMU_API void se_set_draw_notifications(uint32_t value);
+SKYEMU_API uint32_t se_get_draw_notifications(void);
+
+/* GUI scale factor */
+SKYEMU_API void se_set_gui_scale_factor(float scale);
+SKYEMU_API float se_get_gui_scale_factor(void);
+
+/* Only one notification at a time: 0 = off, 1 = on */
+SKYEMU_API void se_set_only_one_notification(uint32_t value);
+SKYEMU_API uint32_t se_get_only_one_notification(void);
+
+/* Enable download cache: 0 = off, 1 = on */
+SKYEMU_API void se_set_enable_download_cache(uint32_t value);
+SKYEMU_API uint32_t se_get_enable_download_cache(void);
+
+/* NDS layout index */
+SKYEMU_API void se_set_nds_layout(uint32_t layout);
+SKYEMU_API uint32_t se_get_nds_layout(void);
+
+/* Touch screen show button labels: 0 = off, 1 = on */
+SKYEMU_API void se_set_touch_screen_show_button_labels(uint32_t value);
+SKYEMU_API uint32_t se_get_touch_screen_show_button_labels(void);
+
+/* Show screen bezel: 0 = off, 1 = on */
+SKYEMU_API void se_set_show_screen_bezel(uint32_t value);
+SKYEMU_API uint32_t se_get_show_screen_bezel(void);
+
+/* Draw debug menu: 0 = off, 1 = on */
+SKYEMU_API void se_set_draw_debug_menu(uint32_t value);
+SKYEMU_API uint32_t se_get_draw_debug_menu(void);
+
+/*
    * New API: send a key event directly to the emulator.
    * The function is exported on all platforms. It can be called
    * from native code or via JNI on Android.
